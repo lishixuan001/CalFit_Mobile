@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title></title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    </head>
+
+  <style>
+    #bg {
+      height: 100%;
+      width:100%;
+      margin: 0;
+      background-image:linear-gradient(rgba(187,225,220,0.5),rgba(231, 176, 114, 0.5)),url("https://www.thoughtco.com/thmb/Q0lzHnrtNZjWgcxkQXE0U7P323c=/4096x2730/filters:fill(auto,1)/GettyImages-529341319-57251d1d3df78ced1fcd0261.jpg");
+      filter: blur(3px);
+      background-attachment: fixed;
+      background-size: cover;
+      position: fixed;
+      z-index: -10;
+      opacity: 0.8;
+    }
+    
+    .logIn {
+      display:inline-block;
+      color:#015a52;
+      font-weight:bold;
+      font-size:14px;
+      position:absolute;
+      top:20px;  
+    }
+    
+    #profile {
+      text-shadow: 1px 1px 2px #1d2923;
+      border-radius:100%;
+      color:#300d00;
+    }
+    
+    #greeting {
+      font-size: 20px;
+    }
+    
+    #userName {
+      font-size:42px;
+    }
+    
+    .sectionContainer {
+      border-radius:25px;
+      background: #f9fdfab8;
+      display:inline-block;
+      width: 141px;
+      height:140px;
+      text-align:center;
+      vertical-align:middle;
+      color:#015a52;
+      font-size:36px;
+    }
+    
+    .family-member-container {
+        margin-top: 50px;
+        padding-bottom:30px;
+        padding-top: 30px;
+        background-color: #ffffff8c;
+    }
+
+
+
+        #menu {
+      position:fixed;
+      display:flex;
+      flex-direction: column;
+      left:-200px;
+      bottom:0px;
+      height:100%;
+      width:200px;
+      background:white;
+      vertical-align:middle;
+      z-index:100;
+      border-radius: 0px 20px 20px 0px;
+
+    }
+
+    .menuicon {
+      flex-direction: column;
+      justify-content:space-evenly;
+    }
+    
+    .menuICON {
+      color: #4D4C4C;
+      vertical-align:middle;
+      font-size:2.5em;
+      margin-top:5px;
+      margin-left: 20px;
+      margin-right: 20px;
+      display: inline-block;
+    }
+
+    .menuTxt {
+      font-size: 20px;
+      font-weight: bolder;
+      padding-left: 20px;
+      min-height: 50px;
+      display: inline-block;
+      padding-top: 5px;
+      max-width: 65%;   
+    }
+    
+
+    #SOS {
+      border-radius:100%;
+      background:white;
+      border:none;
+      width:130px;
+      display:inline-block;
+      box-shadow: 0px 0px 17px 1px #5a4b24b8;
+      height: 130px;
+      margin: 20px 35px 35px 35px;
+      text-align: center;
+      color:red;
+      padding:18px 2px 2px 10px;
+    }
+
+    #menuBG {
+      min-height: 100%;
+      min-width: 100%;
+      margin: 0;
+      background-color: orange;
+      opacity:0.7;
+      background-attachment: fixed;
+      background-size: cover;
+      z-index: 90;
+      position: fixed;
+      top:0;
+      left: -425px;
+    }
+
+
+
+    * {
+        box-sizing: border-box;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 1.4em;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 1.5px;
+        color: #E77C2A;
+        margin: 0;
+        border-bottom: 1px solid #ffa659;
+        padding-bottom: 0.5em;
+    }
+
+    h3 {
+        margin-top: 10px;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 1.5px;
+        color: #999;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    /* The actual timeline (the vertical ruler) */
+    .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* The actual timeline (the vertical ruler) */
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: white;
+        top: 18px;
+        bottom: 0;
+        left: 8%;
+        margin-left: -3px;
+    }
+
+    /* Container around content */
+    .container {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+    }
+
+    /* The circles on the timeline */
+    .container::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: white;
+        border: 4px solid #FF9F55;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+
+    /* Place the container to the right */
+    .right {
+        left: 50%;
+    }
+
+    /* Add arrows to the right container (pointing left) */
+    .right::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        left: 30px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+
+    /* Fix the circle for containers on the right side */
+    .right::after {
+        left: -16px;
+    }
+
+    /* The actual content */
+    .content {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+    }
+      
+      /* Full-width containers */
+      .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0px;
+      }
+      
+      /* Make sure that all arrows are pointing leftwards */
+      .container::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+      }
+
+      /* Make sure all circles are at the same spot */
+      .right::after {
+        left: 15px;
+      }
+      
+      /* Make all right containers behave like the left ones */
+      .right {
+        left: 0%;
+      }
+
+      /* Define font of the presenting heading -- Goal and Current */
+      .heading-font {
+          font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+          font-size: large;
+          font-weight: bold;
+          color: #300d00;
+      }
+
+      /* Define font of the presenting numbers -- Goal and Current */
+      .goal-step-font {
+          font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+          font-size: x-large;
+          font-weight: bold;
+          color: #FF9F55;
+      }
+      .current-step-font {
+          font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+          font-size: x-large;
+          font-weight: bold;
+          color: #00cc00;
+      }
+
+
+    
+  </style>
+    <body>
+        <!-- Your layout here -->
+    <div id="bg">&nbsp;</div>
+    <div style="max-width: 30%; margin-left: 26px;padding-top:13px; color:#22252a; font-weight: bolder;" onclick="toggleHideShow();">
+        <i class="fas fa-bars fa-2x"></i>
+    </div>
+    <div class="container-fluid">
+      <div class="row" style="height:150px;" >
+      </div>
+
+      
+      <div class="row text-center" style="margin-bottom:10px;">
+        <div class="col-12" id="greeting">
+          Good Morning<!-- Auto-detect Time -->
+        </div>
+      </div>
+      <div class="row align-item-center text-center" style="margin-bottom:10px;">
+        <div class="col-12">
+          <div id="profile">
+            <i class="fas fa-user-circle fa-8x" ></i>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+            <div class="col-12" id="userName">
+                {{ user.username }}
+            </div>
+      </div>
+      <div class="family-member-container row align-item-center text-center">
+          <div class="col-6"><span class="heading-font">Goal</span></div>
+          <div class="col-6"><span class="heading-font">Current</span></div>
+          <div class="w-100"></div>
+          <div class="col-6"><span class="goal-step-font">{{ goal_today }}</span></div>
+          <div class="col-6"><span class="current-step-font">{{ current_steps }}</span></div>
+      </div>
+
+      <div class="row align-item-center">
+          <div class="col-12" style="color:#22252a;font-size: 20px;text-align: center; margin-bottom: 30px;padding-top: 70px;">
+          <span id="arrowDown"><i class="fas fa-angle-double-down fa-2x"></i></span>
+          </div>
+      </div>
+
+      <div class="row align-item-center" style="margin-top: 50px;min-height: 100px;width:100%;">
+          <div class="col-12">
+            <div class="timeline">
+              <div class="container right">
+                <div class="content">
+                  <h2>Aug 9, 2018</h2>
+                  <h3>What did you have for meal today?</h3>
+                  <span class="options entypo-cog"><img class="w3-border" style="padding:5px;width:90%;margin-left: 0px;margin-bottom: 30px;" src="https://www.halfbakedharvest.com/wp-content/uploads/2018/04/2-Minute-Green-Smoothie-5.jpg"></span>
+                </div>
+              </div>
+              <div class="container right">
+                <div class="content">
+                  <h2>Aug 8, 2018</h2>
+                  <h3>Let's draw a doodle together to say thank you!</h3>
+                  <span class="follow entypo-plus"><img class="w3-border" style="padding:5px;width:100%;margin-top: 30px;margin-bottom: 30px;" src="https://thumbs.dreamstime.com/b/thank-you-doodle-26538170.jpg"></span>
+                </div>
+              </div>
+              <div class="container right">
+                <div class="content">
+                  <h2>Aug 7, 2018</h2>
+                  <h3>My favorite quote</h3>
+                  <p>There is some good in this world, and it’s worth fighting for.<br>--J.R.R.TOLKEN</p>
+                </div>
+              </div>
+              <div class="container right">
+                <div class="content">
+                  <h2 style="border: none !important;">Load more</h2>
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>
+    
+    </div>
+
+       <div id="menu">
+     <div style="height:20px;">&nbsp;</div>
+     <a>
+       <div style="padding: 44px 44px 0px 44px;margin-bottom: 20px;">
+         <i class="fas fa-user-circle fa-7x" style="padding-bottom: 5px"></i>
+         <span style="text-align: center; font-weight: bold; font-size: 16px; margin-left: 20px;">{{ user.username }}</span>
+       </div>
+     </a>
+     <div id="menuicon">
+      <a href="/calfit/index/">
+       <div class="menuICON">
+         <i class="fas fa-home"></i><span class="menuTxt">HOME</span></div>
+      </a>
+      <a href="/calfit/history/">
+       <div class="menuICON" >
+         <i class="fas fa-address-book" style="margin-left: 4px"></i><span class="menuTxt" style="padding-left: 25px;">HISTORY</span></div>
+      </a>
+      <a href="/calfit/profile/">
+       <div class="menuICON">
+         <i class="fas fa-user-md"></i><span class="menuTxt" style="padding-left: 27px;">PROFILE</span></div>
+      </a>
+      </div>
+
+    
+    </div>
+    <div id="menuBG" onclick="toggleHideShow();">&nbsp;</div>
+    <div id="homeButton"></div>
+  </body>
+  
+  <script>
+  function toggleHideShow() {
+    if ($( "#menu" ).css("left")=="-200px") {
+      $( "#menu" ).stop(true).animate({ left: "+=200px" }, 600 );
+      $("#menuBG").stop(true).animate({ left: "+=425px" }, 600 );
+    } else {
+        $("#menu").stop(true).animate({ left: "-=200px" }, 600);
+        $("#menuBG").stop(true).animate({ left: "-=425px" }, 600 );
+        //$("#homeButton").stop(true).animate({ bottom: "-=78px" }, 600);   
+    }   
+  }
+
+    $(document).ready(function(){
+      var today = new Date();
+      var h = today.getHours();
+      
+      if (h>= 0 && h <12) {
+        $('#greeting').text("Good Morning");
+      }
+      else if (h >= 12 && h<18) {
+         $('#greeting').text("Good Afternoon");  
+      }
+      else {
+         $('#greeting').text("Good Evening");
+      }
+    })
+  </script>
+</html>

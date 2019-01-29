@@ -1,0 +1,164 @@
+<!-- FORUM -->
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title></title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/calfit/vendor/bootstrap/css/bootstrap.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/calfit/css/main.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="{% static '/calfit/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/calfit/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  
+  </head>
+  
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      /*background-color: #66c6ba;*/
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+      #go-back-icon {
+          margin-left: 5%;
+      }
+    
+    #videobcg { 
+        position: absolute;
+        top: 0px;
+        left: -120px;
+        width: 308%;
+        height: 100%;
+        z-index: -1000;
+        overflow: hidden;
+        -webkit-filter: blur(20px);
+        -moz-filter: blur(20px);
+        -o-filter: blur(20px);
+        -ms-filter: blur(20px);
+        filter: blur(20px);
+    }
+
+    .input {
+      border: none !important;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0px 0px 3px 0px #00000057;
+      margin-top:15px;
+      margin-bottom:25px;
+    }
+      
+    .form-group {
+      font-family: 'Raleway', sans-serif;
+    }
+
+
+    #container {
+        margin: 0 auto;
+        padding: 80px;
+    }
+      
+    #display {
+        margin: 0 auto;
+        width: 400px;
+    }
+      
+    #input {
+        padding: 30px;
+    }
+      
+      #username {
+          width: 95%;
+          border: 1px solid black;
+          font-size: 18px;
+      }
+      
+      #password {
+          width: 95%;
+          border: 1px solid black;
+          font-size: 18px;
+      }
+      
+      #submit {
+          font-size: 24px;
+          border: none;
+          border-radius: 40px;
+          background-color: #E78029;
+          padding: 20px 55px 20px 55px;
+          box-shadow: 0px 0px 16px 2px #00000057;
+          color:white;
+      }
+      
+  </style>
+  
+  <body>
+
+    <div>
+      <video id="videobcg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+           <source src="http://ak3.picdn.net/shutterstock/videos/4207399/preview/stock-footage-man-hands-typing-on-a-computer-keyboard.mp4" type="video/mp4">
+           <source src="movie.webm" type="video/webm">
+                Sorry, your browser does not support HTML5 video.
+      </video>
+    </div>
+
+    <a href="/calfit/welcome/">
+      <div style="max-width: 30%; margin-left: 26px;padding-top:13px; color:#E78029; font-weight: bolder;" onclick="toggleHideShow();">
+        <i class="fas fa-angle-left fa-2x"></i>
+      </div>
+    </a>
+    <div style="height: 100px;">&nbsp;</div>
+
+
+      <div class="container">
+          <div id="display">
+              <form id=input action="/calfit/login/" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <label for="username"><font size="4">Username</font></label><br>
+                      <input type="text" class="form-control input" id="username" name="username" placeholder="Enter Username" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="password"><font size="4">Password</font></label><br>
+                      <input type="password" class="input form-control" id="password" name="password" placeholder="Enter Password" required>
+                  </div>
+                 
+                  <br><br>
+                  <div class="form-group" align=center>
+                      <label class="sr-only">Submit Login</label>
+                      <input class="btn btn-primary" id="submit" type="submit" value="Login">
+                  </div>
+              </form>
+          </div>
+      </div>
+  </body>
+  
+  <script>
+    $(document).ready(function(){
+         
+         var $errorMsg =  $('<span id="error_msg_user" style="color:red;font-weight:bold">Username not exist or Password mismatch. </span>');
+         var $passWordBox = $("#password");
+         var $submitBtn = $("#submit");
+      
+         var login_error = "{{ login_error }}";
+        
+          if (login_error == "True") {
+              $errorMsg.insertAfter($passWordBox);
+          }
+       
+    })
+    
+  </script>
+  
+</html>

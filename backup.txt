@@ -1,0 +1,3 @@
+Admin:
+	Username: admin
+	Password: CalfitAdmin
