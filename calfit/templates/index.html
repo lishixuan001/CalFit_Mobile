@@ -300,7 +300,7 @@
         <i class="fas fa-bars fa-2x"></i>
     </div>
     <div class="container-fluid">
-      <div class="row" style="height:150px;" >
+      <div class="row" style="height:100px;" >
       </div>
 
       
@@ -321,6 +321,33 @@
                 {{ user.username }}
             </div>
       </div>
+
+        <!-- Button trigger modal -->
+        <button hidden type="button" id="pop_message" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                {{ message }}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       <div class="family-member-container row align-item-center text-center">
           <div class="col-6"><span class="heading-font">Goal</span></div>
           <div class="col-6"><span class="heading-font">Current</span></div>
@@ -365,7 +392,6 @@
                 </div>
               </div>
             </div>
-
           </div>
       </div>
     
@@ -382,15 +408,18 @@
      <div id="menuicon">
       <a href="/calfit/index/">
        <div class="menuICON">
-         <i class="fas fa-home"></i><span class="menuTxt">HOME</span></div>
+         <i class="fas fa-home"></i><span class="menuTxt">HOME</span>
+       </div>
       </a>
       <a href="/calfit/history/">
        <div class="menuICON" >
-         <i class="fas fa-address-book" style="margin-left: 4px"></i><span class="menuTxt" style="padding-left: 25px;">HISTORY</span></div>
+         <i class="fas fa-address-book" style="margin-left: 4px"></i><span class="menuTxt" style="padding-left: 25px;">HISTORY</span>
+       </div>
       </a>
       <a href="/calfit/profile/">
        <div class="menuICON">
-         <i class="fas fa-user-md"></i><span class="menuTxt" style="padding-left: 27px;">PROFILE</span></div>
+         <i class="fas fa-user-md"></i><span class="menuTxt" style="padding-left: 27px;">PROFILE</span>
+       </div>
       </a>
       </div>
 
@@ -413,6 +442,8 @@
   }
 
     $(document).ready(function(){
+
+        {# Greeting #}
       var today = new Date();
       var h = today.getHours();
       
@@ -425,6 +456,13 @@
       else {
          $('#greeting').text("Good Evening");
       }
+
+        {# Message Popping #}
+        if ({{ message }}) {
+            $('#pop_message').removeClass("hidden");
+        } else {
+            $('#pop_message').addClass("hidden");
+        }
     })
   </script>
 </html>

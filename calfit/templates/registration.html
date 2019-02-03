@@ -10,16 +10,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="{% static '/calfit/vendor/bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static '/calfit/css/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script src="{% static '/calfit/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static '/calfit/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{% static '/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/jquery-ui/jquery-ui.min.js' %}"></script>
 
   </head>
 
@@ -80,19 +80,20 @@
     }
 
       #username {
-          width: 95%;
+          width: 90%;
           border: 1px solid black;
           font-size: 18px;
       }
 
+
       #password {
-          width: 95%;
+          width: 90%;
           border: 1px solid black;
           font-size: 18px;
       }
 
       #confirm_password {
-          width: 95%;
+          width: 90%;
           border: 1px solid black;
           font-size: 18px;
       }
@@ -107,73 +108,22 @@
           color:white;
       }
 
+      #label {
+          "font-size": medium;
+      }
+
   </style>
-
-    <script>
-        $(document).ready(function(){
-            var $submitBtn = $("#submit");
-            var $passwordBox = $("#password");
-            var $confirmBox = $("#confirm_password");
-            var $errorMsg =  $('<span id="error_msg" style="color:red">Passwords do not match.</span>');
-
-            $submitBtn.removeAttr("disabled");
-            function checkMatchingPasswords(){
-                if($confirmBox.val() != "" && $passwordBox.val != ""){
-                    if( $confirmBox.val() != $passwordBox.val() ){
-                        $submitBtn.attr("disabled", "disabled");
-                        $errorMsg.insertAfter($confirmBox);
-                    }
-                }
-            }
-            function resetPasswordError(){
-                $submitBtn.removeAttr("disabled");
-                var $errorCont = $("#error_msg");
-                if($errorCont.length > 0){
-                    $errorCont.remove();
-                }
-            }
-            $("#confirm_password, #password")
-             .on("keydown", function(e){
-                /* only check when the tab or enter keys are pressed
-                 * to prevent the method from being called needlessly  */
-                if(e.keyCode == 13 || e.keyCode == 9) {
-                    checkMatchingPasswords();
-                }
-             })
-             .on("focusout", function(){
-                // also check when the element looses focus (clicks somewhere else)
-                resetPasswordError();
-                checkMatchingPasswords();
-             })
-             .on("focus", function(){
-                // reset the error message when they go to make a change
-                resetPasswordError();
-                checkMatchingPasswords();
-             });
-
-            $("#submit")
-            .on("click", function(){
-                resetPasswordError();
-                checkMatchingPasswords();
-            });
-
-        })
-
-
-    </script>
 
   <body>
 
     <div>
-      <video id="videobcg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
-           <source src="http://ak3.picdn.net/shutterstock/videos/4207399/preview/stock-footage-man-hands-typing-on-a-computer-keyboard.mp4" type="video/mp4">
-           <source src="movie.webm" type="video/webm">
-                Sorry, your browser does not support HTML5 video.
-      </video>
+{#      <video id="videobcg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0" width="100%">#}
+{#           <source src="http://ak3.picdn.net/shutterstock/videos/4207399/preview/stock-footage-man-hands-typing-on-a-computer-keyboard.mp4" type="video/mp4">#}
+{#           <source src="movie.webm" type="video/webm">#}
+{#                Sorry, your browser does not support HTML5 video.#}
+{#      </video>#}
 
     </div>
-
-
 
 
       <a href="/calfit/welcome/">
@@ -188,17 +138,33 @@
               <form id=input action="/calfit/registration/" method="post">
                   {% csrf_token %}
                   <div class="form-group">
-                      <label for="username"><font size="4">Username</font></label><br>
-                      <input type="text" class="form-control input" id="username" name="username" placeholder="Enter Username" required>
+                      <label for="username"><span id="label">Username(Email)</span></label><br>
+                      <input type="text" class="form-control input" id="username" name="username" placeholder="USERNAME" {% if username_value %} value={{ username_value }} {% endif %} required>
+                  </div>
+
+                  {# Show warning when email invalid #}
+                  {% if invalid_username  %}
+                        <span id="error_msg" style="color:red">Invalid Email Format</span>
+                  {% endif %}
+                  {# Show warning when username duplicated #}
+                  {% if duplicated_username%}
+                        <span id="error_msg" style="color:red">Username Already Exist</span>
+                  {% endif %}
+
+                  <div class="form-group">
+                      <label for="password"><span id="label">Password</span></label><br>
+                      <input type="password" class="input form-control" id="password" name="password" placeholder="PASSWORD" {% if password_value %} value={{ password_value }} {% endif %} required>
                   </div>
                   <div class="form-group">
-                      <label for="password"><font size="4">Password</font></label><br>
-                      <input type="password" class="input form-control" id="password" name="password" placeholder="Enter Password" required>
+                      <label for="confirm_password"><span id="label">Confirm Password</span></label><br>
+                      <input type="password" class="input form-control" id="confirm_password" name="confirm_password" placeholder="RE-PASSWORD" {% if confirm_password_value %} value={{ confirm_password_value }} {% endif %} required>
                   </div>
-                  <div class="form-group">
-                      <label for="confirm_password"><font size="4">Confirm Password</font></label><br>
-                      <input type="password" class="input form-control" id="confirm_password" name="confirm_password" placeholder="Re-Enter Password" required>
-                  </div>
+
+                  {# Show warning when password mis-match #}
+                  {% if psw_not_match %}
+                        <span id="error_msg" style="color:red">Password Not Match</span>
+                  {% endif %}
+
                   <br><br>
                   <div class="form-group" align=center>
                       <label class="sr-only">Submit Registration</label>

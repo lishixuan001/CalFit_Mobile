@@ -1,10 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
-import time
+from django.utils import timezone
 
 class Record(models.Model):
     def __str__(self):
-        return "{username}:{date}".format(self.user.username, self.date)
+        return "{username} : {date} : {steps}".format(username=self.user.username, date=self.date.date(), steps=self.steps)
 
     user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
-    date = time.strftime("%Y%m%d")
+    steps = models.IntegerField(default=0)
+    # date -> 20190101
+    # Datetime ->  timezone.datetime(2019, 1, 30, 12, 30, 55, 000)
+    date = models.DateTimeField(default=timezone.now(), blank=True)

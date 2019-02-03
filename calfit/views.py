@@ -3,21 +3,37 @@ from django.contrib import auth
 from django.http import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-import time
+import time, re
 
 def welcome(request):
     if request.method == 'GET':
         return render(request, 'welcome.html', {})
 
 def registration(request):
+    context = {}
+
     if request.method == 'GET':
-        return render(request, 'registration.html', {})
+        return render(request, 'registration.html', context)
 
     if request.method == 'POST':
+
         username = request.POST.get('username')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
+        context["username_value"] = username
+        context["password_value"] = password
+        context["confirm_password_value"] = confirm_password
+
+        # Check if username is in email format
+        if not valid_email(username):
+            context["invalid_username"] = True
+            return render(request, "registration.html", context)
 
         # User object here is default by Django
-        # TODO: Check if deplicated username
+        if is_duplicated_username(username):
+            context["duplicated_username"] = True
+            return render(request, "registration.html", context)
 
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
@@ -25,7 +41,10 @@ def registration(request):
         # Check if password matches
         if password == confirm_password and password is not "" or None:
             User.objects.create_user(username=username, password=password)
-        return HttpResponseRedirect('/calfit/login')
+            return HttpResponseRedirect('/calfit/login')
+        else:
+            context["psw_not_match"] = True
+            return render(request, "registration.html", context)
 
 def login(request):
     """
@@ -71,3 +90,14 @@ def index(request):
         'current_steps' : current_steps
     }
     return render(request, 'index.html', context)
+
+
+# ==================================================== #
+#                  Helper Functions                    #
+# ==================================================== #
+def valid_email(address):
+    return re.match('^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?))$', address) is not None
+
+
+def is_duplicated_username(username):
+    return User.objects.filter(username=username).exists()

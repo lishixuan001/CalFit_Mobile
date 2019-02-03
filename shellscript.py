@@ -1,10 +1,9 @@
 import django
+from django.utils import timezone
 django.setup()
 
 from calfit.models import Record
 from django.contrib.auth.models import User
-
-from django.utils import timezone
 
 print("User Objects: ")
 for user in User.objects.all():
