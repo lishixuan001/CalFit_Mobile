@@ -31,7 +31,7 @@ def registration(request):
             return render(request, "registration.html", context)
 
         # User object here is default by Django
-        if is_duplicated_username(username):
+        if username_exist(username):
             context["duplicated_username"] = True
             return render(request, "registration.html", context)
 
@@ -51,14 +51,23 @@ def login(request):
     :param request: request received
     :return: http response about logging in
     """
+    context = {}
+
     if request.method == 'GET':
         if request.user.is_authenticated:
             return HttpResponseRedirect('/calfit/index')
-        return render(request, 'login.html', {})
+        return render(request, 'login.html', context)
 
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+
+        context["username_value"] = username
+
+        if not username_exist(username):
+            context["user_not_exist"] = True
+            return render(request, 'login.html', context)
+
         # Check username and password, if valid, return a User object
         user = auth.authenticate(username=username, password=password)
         if user:
@@ -66,9 +75,7 @@ def login(request):
             auth.login(request, user)
             return HttpResponseRedirect('/calfit/index/')
         else:
-            context = {
-                'login_error' : True,
-            }
+            context["psw_not_match"] = True
             return render(request, 'login.html', context)
 
 @login_required(login_url='/calfit/welcome/')
@@ -99,5 +106,5 @@ def valid_email(address):
     return re.match('^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?))$', address) is not None
 
 
-def is_duplicated_username(username):
+def username_exist(username):
     return User.objects.filter(username=username).exists()

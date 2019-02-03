@@ -8,73 +8,19 @@
         
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/2.0.5/velocity.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static '/css/welcome.css' %}" />
+
+        <link rel="stylesheet" type="text/css" href="{% static '/css/w3.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/css/fira_sans.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/css/fontawesome.css' %}" />
+
+        <script src="{% static 'js/velocity.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/jquery-ui.min.js' %}"></script>
     </head>
-
-    <style>
-        body {
-            background: #fff;
-            margin: 0 0;
-            padding:10px;
-            text-align:center;
-        }
-
-        #videobcg { 
-            position: absolute;
-            top: 0px;
-            left: -120px;
-            width: 308%;
-            height: 100%;
-            z-index: -1000;
-            overflow: hidden;
-            -webkit-filter: blur(40px);
-            -moz-filter: blur(40px);
-            -o-filter: blur(40px);
-            -ms-filter: blur(40px);
-            filter: blur(40px);
-        }
-
-        .title {
-            position:relative;
-            font-family: 'Open Sans','Helvetica Neue', Helvetica, sans serif;
-            font-weight:regular;
-            font-size: 14px;
-            text-shadow: 0px 1px 2px rgba(255,255,255,.125);
-            color: #121212;
-            text-align:center;
-        }
-
-        .cap {
-            margin-top:75px;
-        }
-
-        .icon {
-            height: 200px;
-            width:200px;
-        }
-
-        .submitQuestion {
-            border-radius: 40px;
-            padding: 5% 0 5% 0;
-            border: none;
-            color: white;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
-            background:  linear-gradient(90deg,#b80000, #e98200);
-            width:75%;
-            margin-left: 12%;
-        }
-    </style>
 
     <body>
         <div>
@@ -90,7 +36,7 @@
             <div class="row" style="height:100px;">&nbsp;</div>
             <div class="row text-center align-item-center">
                 <div class="col-12 icon">
-                    <img class="icon" src="https://i.pinimg.com/originals/d7/73/b4/d773b4696367c836311ab7c263bde4a7.png">
+                    <img class="icon" src={% static '/img/logo.png' %}>
                 </div>
             </div>
             <div class="row" style="height:40px;">&nbsp;</div>

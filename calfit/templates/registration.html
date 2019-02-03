@@ -10,136 +10,47 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/registration.css' %}" />
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script src="{% static '/jquery/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static '/jquery-ui/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/w3.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/fira_sans.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static '/css/fontawesome.css' %}" />
+
+      <script src="{% static '/js/velocity.js' %}"></script>
+      <script src="{% static '/js/popper.min.js' %}"></script>
+      <script src="{% static '/js/jquery-3.3.1.min.js' %}"></script>
+      <script src="{% static '/js/jquery-ui.min.js' %}"></script>
+      <script src="{% static '/js/bootstrap.min.js' %}"></script>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
 
   </head>
-
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      /*background-color: #66c6ba;*/
-
-      background-attachment: fixed;
-      background-size: cover;
-    }
-
-    #videobcg {
-        position: absolute;
-        top: 0px;
-        left: -120px;
-        width: 308%;
-        height: 100%;
-        z-index: -1000;
-        overflow: hidden;
-        -webkit-filter: blur(20px);
-        -moz-filter: blur(20px);
-        -o-filter: blur(20px);
-        -ms-filter: blur(20px);
-        filter: blur(20px);
-    }
-
-      #go-back-icon {
-          margin-left: 5%;
-      }
-
-    .input {
-      border: none !important;
-      border-radius: 20px;
-      padding: 10px;
-      box-shadow: 0px 0px 3px 0px #00000057;
-      margin-top:15px;
-      margin-bottom:25px;
-    }
-
-    #container {
-        margin: 0 auto;
-        padding: 80px;
-    }
-
-    #display {
-        margin: 0 auto;
-        width: 400px;
-    }
-
-    #input {
-        padding: 30px;
-    }
-
-    .form-group {
-      font-family: 'Raleway', sans-serif;
-    }
-
-      #username {
-          width: 90%;
-          border: 1px solid black;
-          font-size: 18px;
-      }
-
-
-      #password {
-          width: 90%;
-          border: 1px solid black;
-          font-size: 18px;
-      }
-
-      #confirm_password {
-          width: 90%;
-          border: 1px solid black;
-          font-size: 18px;
-      }
-
-      #submit {
-          font-size: 24px;
-          border: none;
-          border-radius: 40px;
-          background-color: #E78029;
-          padding: 20px 55px 20px 55px;
-          box-shadow: 0px 0px 16px 2px #00000057;
-          color:white;
-      }
-
-      #label {
-          "font-size": medium;
-      }
-
-  </style>
 
   <body>
 
     <div>
-{#      <video id="videobcg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0" width="100%">#}
-{#           <source src="http://ak3.picdn.net/shutterstock/videos/4207399/preview/stock-footage-man-hands-typing-on-a-computer-keyboard.mp4" type="video/mp4">#}
-{#           <source src="movie.webm" type="video/webm">#}
-{#                Sorry, your browser does not support HTML5 video.#}
-{#      </video>#}
-
+      <video id="videobcg" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0" width="100%">
+           <source src="http://ak3.picdn.net/shutterstock/videos/4207399/preview/stock-footage-man-hands-typing-on-a-computer-keyboard.mp4" type="video/mp4">
+           <source src="movie.webm" type="video/webm">
+                Sorry, your browser does not support HTML5 video.
+      </video>
     </div>
 
 
       <a href="/calfit/welcome/">
-        <div style="max-width: 30%; margin-left: 26px;padding-top:13px; color:#E78029; font-weight: bolder;" onclick="toggleHideShow();">
+        <div id="back-arrow" onclick="toggleHideShow();">
           <i class="fas fa-angle-left fa-2x"></i>
         </div>
       </a>
-      <div style="height: 100px;">&nbsp;</div>
 
       <div class="container">
           <div id="display">
               <form id=input action="/calfit/registration/" method="post">
                   {% csrf_token %}
                   <div class="form-group">
-                      <label for="username"><span id="label">Username(Email)</span></label><br>
-                      <input type="text" class="form-control input" id="username" name="username" placeholder="USERNAME" {% if username_value %} value={{ username_value }} {% endif %} required>
+                      <label for="username"><span style="font-size: large">Username(Email)</span></label><br>
+                      <input type="text" class="form-control input" id="username" name="username" placeholder="ME@EXAMPLE.COM" {% if username_value %} value={{ username_value }} {% endif %} required>
                   </div>
 
                   {# Show warning when email invalid #}
@@ -152,12 +63,12 @@
                   {% endif %}
 
                   <div class="form-group">
-                      <label for="password"><span id="label">Password</span></label><br>
+                      <label for="password"><span style="font-size: large">Password</span></label><br>
                       <input type="password" class="input form-control" id="password" name="password" placeholder="PASSWORD" {% if password_value %} value={{ password_value }} {% endif %} required>
                   </div>
                   <div class="form-group">
-                      <label for="confirm_password"><span id="label">Confirm Password</span></label><br>
-                      <input type="password" class="input form-control" id="confirm_password" name="confirm_password" placeholder="RE-PASSWORD" {% if confirm_password_value %} value={{ confirm_password_value }} {% endif %} required>
+                      <label for="confirm_password"><span style="font-size: large">Confirm Password</span></label><br>
+                      <input type="password" class="input form-control" id="confirm_password" name="confirm_password" placeholder="PASSWORD" {% if confirm_password_value %} value={{ confirm_password_value }} {% endif %} required>
                   </div>
 
                   {# Show warning when password mis-match #}
