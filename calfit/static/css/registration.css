@@ -35,13 +35,11 @@ body, html {
     border-radius: 20px;
     padding: 10px;
     box-shadow: 0px 0px 3px 0px #00000057;
-    margin-top:5%;
-    margin-bottom:2%;
+    margin-bottom:5%;
 }
 
 #container {
     margin-top: 10%;
-    /*padding: 80px;*/
 }
 
 #display {
@@ -64,22 +62,19 @@ body, html {
 }
 
 #label-font {
-  "font-size": 1.2rem
-;
+  "font-size": 1.2rem;
 }
 
 #password {
   width: 100%;
   border: 1px solid black;
-  font-size: 1.2rem
-;
+  font-size: 1.2rem;
 }
 
 #confirm_password {
   width: 100%;
   border: 1px solid black;
-  font-size: 1.2rem
-;
+  font-size: 1.2rem;
 }
 
 #submit {
