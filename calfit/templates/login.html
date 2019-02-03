@@ -42,7 +42,6 @@
         <i class="fas fa-angle-left fa-2x"></i>
       </div>
     </a>
-    <div style="height: 100px;">&nbsp;</div>
 
 
       <div class="container">
@@ -51,20 +50,20 @@
                   {% csrf_token %}
                   <div class="form-group">
                       <label for="username"><span style="font-size: medium; ">Username</span></label><br>
-                      <input type="text" class="form-control input" id="username" name="username" placeholder="Enter Username" {% if username_value %} value={{ username_value }} {% endif %} required>
+                      <input type="text" class="form-control input" id="username" name="username" placeholder="USERNAME" {% if username_value %} value={{ username_value }} {% endif %} required>
                   </div>
                   <div class="form-group">
                       <label for="password"><span style="font-size: medium; ">Password</span></label><br>
-                      <input type="password" class="input form-control" id="password" name="password" placeholder="Enter Password" required>
+                      <input type="password" class="input form-control" id="password" name="password" placeholder="PASSWORD" required>
                   </div>
 
                  {# If username not exist #}
                  {% if user_not_exist %}
-                    <span id="error_msg_user" style="color:red;font-weight:bold">Username Not Exist </span>
+                    <span id="error_msg" style="color:red;font-weight:bold">Username Not Exist </span>
                  {% endif %}
                  {# If password not match #}
                  {% if psw_not_match %}
-                    <span id="error_msg_user" style="color:red;font-weight:bold">Password Not Match</span>
+                    <span id="error_msg" style="color:red;font-weight:bold">Password Not Match</span>
                  {% endif %}
 
                   <br><br>

@@ -20,19 +20,21 @@ def registration(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
+        email = request.POST.get("email")
 
         context["username_value"] = username
         context["password_value"] = password
         context["confirm_password_value"] = confirm_password
-
-        # Check if username is in email format
-        if not valid_email(username):
-            context["invalid_username"] = True
-            return render(request, "registration.html", context)
+        context["invalid_email"] = email
 
         # User object here is default by Django
         if username_exist(username):
             context["duplicated_username"] = True
+            return render(request, "registration.html", context)
+
+        # Check if username is in email format
+        if not valid_email(email):
+            context["invalid_email"] = True
             return render(request, "registration.html", context)
 
         password = request.POST.get('password')
@@ -40,8 +42,8 @@ def registration(request):
 
         # Check if password matches
         if password == confirm_password and password is not "" or None:
-            User.objects.create_user(username=username, password=password)
-            return HttpResponseRedirect('/calfit/login')
+            User.objects.create_user(username=username, password=password, email=email)
+            return render(request, "login.html", context)
         else:
             context["psw_not_match"] = True
             return render(request, "registration.html", context)
@@ -84,6 +86,11 @@ def index(request):
     :param request: request received
     :return: http redirection to index page if logged in
     """
+    context = {
+        "goal_today" : 0,
+        "current_steps" : 0,
+        "message" : None,
+    }
 
     # Check and formulate local time -> cloud database should save as { "20180101" : "8741" } pattern
     date = time.strftime("%Y%m%d")
@@ -92,10 +99,13 @@ def index(request):
     goal_today = 1234
     current_steps = 1200
 
-    context = {
-        'goal_today' : goal_today,
-        'current_steps' : current_steps
-    }
+    message_title = "message title"
+    message = Message(title="Message Title", content="Message Content")
+
+    context["goal_today"] = goal_today
+    context["current_steps"] = current_steps
+    context["message"] = message
+
     return render(request, 'index.html', context)
 
 
@@ -108,3 +118,8 @@ def valid_email(address):
 
 def username_exist(username):
     return User.objects.filter(username=username).exists()
+
+class Message:
+    def __init__(self, title, content):
+        self.title = title
+        self.content = content

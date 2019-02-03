@@ -57,8 +57,13 @@ body, html {
 #username {
   width: 100%;
   border: 1px solid black;
-  font-size: 1.2rem
-;
+  font-size: 1rem;
+}
+
+#email {
+  width: 100%;
+  border: 1px solid black;
+  font-size: 1rem;
 }
 
 #label-font {
@@ -68,13 +73,13 @@ body, html {
 #password {
   width: 100%;
   border: 1px solid black;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 #confirm_password {
   width: 100%;
   border: 1px solid black;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 #submit {
@@ -83,6 +88,6 @@ body, html {
   border-radius: 40px;
   background-color: #E78029;
   padding: 6% 12% 6% 12%;
-  box-shadow: 0% 0% 5% 2% #00000057;
-  color:white;
+  box-shadow: 2px 2px 1px #00000057;
+  color: white;
 }

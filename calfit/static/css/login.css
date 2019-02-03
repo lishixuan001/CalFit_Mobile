@@ -46,7 +46,7 @@ body, html {
 }
 
 #display {
-    margin-top: 10%;
+    margin-top: 20%;
 }
 
 #input {
@@ -56,8 +56,7 @@ body, html {
 #username {
   width: 100%;
   border: 1px solid black;
-  font-size: 1.2rem
-;
+  font-size: 1.2rem;
 }
 
 #label-font {
@@ -70,17 +69,12 @@ body, html {
   font-size: 1.2rem;
 }
 
-#confirm_password {
-  width: 100%;
-  border: 1px solid black;
-  font-size: 1.2rem;
-}
-
 #submit {
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 40px;
-  background-color: #E78029;
-  padding: 6% 12% 6% 12%;
-  box-shadow: 0% 0% 5% 2% #00000057;
-  color:white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 40px;
+    background-color: #E78029;
+    padding: 6% 12% 6% 12%;
+    box-shadow: 2px 2px 1px #00000057;
+    color: white;
+}

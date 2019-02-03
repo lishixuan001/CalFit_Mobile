@@ -27,6 +27,7 @@
 
   </head>
 
+
   <body>
 
     <div>
@@ -49,17 +50,23 @@
               <form id=input action="/calfit/registration/" method="post">
                   {% csrf_token %}
                   <div class="form-group">
-                      <label for="username"><span style="font-size: large">Username(Email)</span></label><br>
-                      <input type="text" class="form-control input" id="username" name="username" placeholder="ME@EXAMPLE.COM" {% if username_value %} value={{ username_value }} {% endif %} required>
+                      <label for="username"><span style="font-size: large">Username</span></label><br>
+                      <input type="text" class="form-control input" id="username" name="username" placeholder="USERNAME" {% if username_value %} value={{ username_value }} {% endif %} required>
+                  </div>
+
+                  {# Show warning when username duplicated #}
+                  {% if duplicated_username %}
+                        <span id="error_msg" style="color:red">Username Already Exist</span>
+                  {% endif %}
+
+                  <div class="form-group">
+                      <label for="email"><span style="font-size: large">Email</span></label><br>
+                      <input type="text" class="form-control input" id="email" name="email" placeholder="ME@EXAMPLE.COM" {% if email_value %} value={{ email_value }} {% endif %} required>
                   </div>
 
                   {# Show warning when email invalid #}
-                  {% if invalid_username  %}
+                  {% if invalid_email  %}
                         <span id="error_msg" style="color:red">Invalid Email Format</span>
-                  {% endif %}
-                  {# Show warning when username duplicated #}
-                  {% if duplicated_username%}
-                        <span id="error_msg" style="color:red">Username Already Exist</span>
                   {% endif %}
 
                   <div class="form-group">
