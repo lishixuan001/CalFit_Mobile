@@ -53,7 +53,7 @@ class Message(models.Model):
     # type -> "goal_decrease_for_two_consecutive_weeks"
     #      -> "system_message"
     #      -> "update_steps_remind"
-    type = models.CharField(default=None)
+    type = models.IntegerField(default=0)
     responded = models.BooleanField(default=False)
     message_title = models.CharField(default=None, max_length=100)
     message_content = models.CharField(default=None, max_length=500)
