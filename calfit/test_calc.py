@@ -1,29 +1,26 @@
-from datetime import date, datetime, timedelta
 from gurobipy import *
-import json, requests, pytz
 import numpy as np
-import random
-import math
-import scipy as sp
+
 """
 This function will be called once for each user on each day.
 Get the set goal for the next day for the current user
 
 @:param
-    past_steps: the vector containing the true number of steps of the current user
+    true_past_steps: the vector containing the true number of steps of the current user
              (for example, if today is the third day of the study, and the current user's number of steps in day 1 and 2 are 5130 and 6250,
               then truePastNumSteps = [5.13, 6.25])
     past_goals: the past goals of the current user
              (for example, if the goal for the current user for day 1 and day 2 are: 5000 and 6000,
               then, g = [5, 6])
 @:return
-    goals_for_next_week: the set goal for the next week for the current user
+    goal_for_next_week: the set goal for the next week for the current user
 """
-def calc_goal(past_steps, past_goals, isControl=False):
+def calc_goal(true_past_steps, past_goals, isControl=False):
 
     # Initialize the first week by setting all goals to 5000
-    if type(past_steps) != list:
-        past_steps = [float("%0.3f" % float(s)) for s in past_steps.split(',')]
+    # TODO -- Different from that in "testing.py" file
+    if type(true_past_steps) != list:
+        true_past_steps = [float("%0.3f" % float(s)) for s in true_past_steps.split(',')]
         past_goals = [float(s) for s in past_goals.split(',')]
 
     '''
@@ -170,9 +167,9 @@ def calc_goal(past_steps, past_goals, isControl=False):
     # need to add log histogram
     model.setObjective(
         (  quicksum(a[w] for w in range(n))
-         - quicksum(z_ub[i] * np.log(fe[i]) for i in range(m_x))
-         - quicksum(z_p1[i] * np.log(fe[i]) for i in range(m_x))
-         - quicksum(z_mu[i] * np.log(fe[i]) for i in range(m_x))  )
+         - quicksum(z_ub[i]*np.log(fe[i]) for i in range(m_x))
+         - quicksum(z_p1[i]*np.log(fe[i]) for i in range(m_x))
+         - quicksum(z_mu[i]*np.log(fe[i]) for i in range(m_x))  )
         , GRB.MINIMIZE)
 
 
@@ -183,8 +180,8 @@ def calc_goal(past_steps, past_goals, isControl=False):
     '''
     # Fix variables associated with cells whose values are pre-specified
     for i in range(n):
-        model.addConstr(a[i] >= u[i] - past_steps[i], 'const1_' + str(i))
-        model.addConstr(a[i] >= past_steps[i] - u[i], 'const2_' + str(i))
+        model.addConstr(a[i] >= u[i] - true_past_steps[i], 'const1_' + str(i))
+        model.addConstr(a[i] >= true_past_steps[i] - u[i], 'const2_' + str(i))
         model.addConstr(u[i] <= M * y_u[i], 'const3_' + str(i))
         model.addConstr(lambda_1[i] <= M * (1-y_u[i]), 'const4_' + str(i))
 
@@ -244,16 +241,9 @@ def calc_goal(past_steps, past_goals, isControl=False):
     #           Retrieve Optimization Result             #
     ######################################################
     '''
-    # FIXME : I should be hidden
-
-    if model.status == GRB.Status.OPTIMAL:
-        print("==================================")
-        print('Optimal objective: %g' % model.objVal)
-        print("==================================")
-
-    print('\nSolution:\n')
-    for v in model.getVars():
-        print("{var_name}, {var_value}".format(var_name=v.varName, var_value=v.x))
+    # print('\nSolution:\n')
+    # for v in model.getVars():
+    #     print("{var_name}, {var_value}".format(var_name=v.varName, var_value=v.x))
 
 
     '''
@@ -262,7 +252,7 @@ def calc_goal(past_steps, past_goals, isControl=False):
     ######################################################
     '''
     u_map = []
-    for key, val in u.items():
+    for key,val in u.items():
         u_map.append(val.X)
 
     mu_map = mu.X if mu.X != 0 else 0.1
@@ -440,15 +430,9 @@ def calc_goal(past_steps, past_goals, isControl=False):
     for key, val in g.items():
         goal.append(val.X)
 
-    goals_for_next_week = goal[len(past_steps): (len(past_steps) + 7)]
+    goal_for_next_week = goal[len(true_past_steps): (len(true_past_steps) + 7)]
 
     # Return the value of the goal
-    return goals_for_next_week
+    return goal_for_next_week
 
-
-
-if __name__ == "__main__":
-    past_steps = [1035, 1034, 1033, 1032, 1031, 1030, 1029]
-    past_goals = [1000] * len(past_steps)
-    goals_for_next_week = calc_goal(past_steps, past_goals)
-    print(goals_for_next_week)
+print (calc_goal([1035, 1034, 1033, 1032, 1031, 1030, 1029],[1000, 1000, 1000, 1000, 1000, 1000, 1000]))

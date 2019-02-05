@@ -23,7 +23,7 @@ class Record(models.Model):
 
 class Goal(models.Model):
     def __str__(self):
-        return "{username} : {date} : {goal}".format(username=self.user.username, date=self.date.date(), steps=self.goal)
+        return "{username} : {date} : {goal}".format(username=self.user.username, date=self.date.date(), goal=self.goal)
 
     user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     # date -> 20190101

@@ -114,11 +114,10 @@ def index(request):
     if today_goal_exist:
         context["goal_today"] = Goal.objects.get(user=user, date=today_date).get_goal()
     else:
+        # TODO: Send Message if recent steps are not uploaded
         past_steps, past_goals = get_past_steps_and_goals(user, today_date)
-        goals_for_next_week = calc_goal(past_steps, past_goals)
-        goal_today = save_goals_for_next_week(user, today_date, goals_for_next_week)
-
-
+        goals_for_next_week = calc_goal(convert_to_k(past_steps), convert_to_k(past_goals))
+        goal_today = save_goals_for_next_week(user, today_date, convert_from_k(goals_for_next_week))
         context["goal_today"] = goal_today
 
     if goal_decrease_for_two_consecutive_weeks():
@@ -186,8 +185,9 @@ def get_past_steps_and_goals(user, today_date):
 
     # FIXME: Current strategy -> retrieve by days, when some day's data is not available, deem it as terminal (not under-update)
     # FIXME: -> Only consider data (days) which has both past_step and past_goal
+    # FIXME: -> If recent data is empty, count it as 0
     for i in range(7):
-        past_date = today_date - timezone.timedelta(days=i + 1)
+        past_date = today_date - timezone.timedelta(days=i+1)
 
         past_record_exist = Record.objects.filter(user=user, date=past_date).exists()
         past_goal_exist = Goal.objects.filter(user=user, date=past_date).exists()
@@ -198,9 +198,25 @@ def get_past_steps_and_goals(user, today_date):
 
             past_steps.append(date_past_steps)
             past_goals.append(date_past_goal)
-        else:
-            break
+
     return past_steps, past_goals
+
+
+def convert_to_k(data):
+    """
+    :param data: [num0, num1, ...] A list of data to be converted to K count-unit
+    :return: Transitioned list of data . [1000, 1100] -> [1.0, 1.1]
+    """
+    return list(map(lambda x: x / 1000, data))
+
+
+def convert_from_k(data):
+    """
+    :param data: [num0, num1, ...] A list of data to be converted from K count-unit
+    :return: Transitioned list of data. [1.0, 1.1] -> [1000, 1100]
+    """
+    return list(map(lambda x: int(x * 1000), data))
+
 
 def save_goals_for_next_week(user, today_date, goals_for_next_week):
     """
@@ -209,8 +225,8 @@ def save_goals_for_next_week(user, today_date, goals_for_next_week):
     :param goals_for_next_week: [goal0, goal1, ...] A list of goals for next week (from today on, include)
     :return: The goal for today (based on the newly calculated)
     """
-    for i in range(len(goal_for_next_week)):
+    for i in range(len(goals_for_next_week)):
         new_date = today_date + timezone.timedelta(days=i)
         new_goal = Goal(user=user, date=new_date)
         new_goal.save()
-    return goal_for_next_week[0]
+    return goals_for_next_week[0]
