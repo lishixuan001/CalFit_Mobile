@@ -7,7 +7,35 @@ class Record(models.Model):
         return "{username} : {date} : {steps}".format(username=self.user.username, date=self.date.date(), steps=self.steps)
 
     user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
-    steps = models.IntegerField(default=0)
     # date -> 20190101
     # Datetime ->  timezone.datetime(2019, 1, 30, 12, 30, 55, 000)
+    # date => datetime.date() -> datetime.date(2019, 1, 30)
+    # Record(user=user, steps=steps, date=timezone.datetime(2019, 1, 30).date())
     date = models.DateTimeField(default=timezone.now(), blank=True)
+    steps = models.IntegerField(default=0)
+
+    def get_user(self):
+        return self.user
+    def get_date(self):
+        return self.date
+    def get_steps(self):
+        return self.steps
+
+class Goal(models.Model):
+    def __str__(self):
+        return "{username} : {date} : {goal}".format(username=self.user.username, date=self.date.date(), steps=self.goal)
+
+    user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+    # date -> 20190101
+    # Datetime ->  datetime = timezone.datetime(2019, 1, 30, 12, 30, 55, 000)
+    # date => datetime.date() -> datetime.date(2019, 1, 30)
+    # Record(user=user, steps=steps, date=timezone.datetime(2019, 1, 30).date())
+    date = models.DateTimeField(default=None, blank=True)
+    goal = models.IntegerField(default=0)
+
+    def get_user(self):
+        return self.user
+    def get_date(self):
+        return self.date
+    def get_goal(self):
+        return self.goal

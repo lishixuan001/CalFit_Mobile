@@ -30,7 +30,7 @@
     <body>
         <!-- Your layout here -->
     <div id="bg">&nbsp;</div>
-    <div style="max-width: 30%; margin-left: 26px;padding-top:13px; color:#22252a; font-weight: bolder;" onclick="toggleHideShow();">
+    <div style="max-width: 30%; margin-left: 5%; padding-top:5%; color:#22252a; font-weight: bolder;" onclick="toggleHideShow();">
         <i class="fas fa-bars fa-2x"></i>
     </div>
     <div class="container-fluid">
@@ -74,7 +74,7 @@
             {{ message.content }}
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Got It</button>
           </div>
         </div>
       </div>
@@ -135,7 +135,10 @@
      <a>
        <div style="padding: 44px 44px 0px 44px;margin-bottom: 20px;">
          <i class="fas fa-user-circle fa-7x" style="padding-bottom: 5px"></i>
-         <span style="text-align: center; font-weight: bold; font-size: 16px; margin-left: 20px;">{{ user.username }}</span>
+           <div align="center">
+               <span style="font-weight: bold; font-size: 16px;">{{ user.username }}</span>
+           </div>
+
        </div>
      </a>
      <div id="menuicon">
@@ -152,6 +155,11 @@
       <a href="/calfit/profile/">
        <div class="menuICON">
          <i class="fas fa-user-md"></i><span class="menuTxt" style="padding-left: 27px;">PROFILE</span>
+       </div>
+      </a>
+      <a href="/calfit/logout/">
+       <div class="menuICON">
+         <i class="fas fa-eject"></i><span class="menuTxt" style="padding-left: 27px;">LOGOUT</span>
        </div>
       </a>
       </div>

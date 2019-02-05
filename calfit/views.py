@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.contrib import auth
 from django.http import *
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from calfit.models import *
+from calfit.calc import *
 import time, re
 
 def welcome(request):
@@ -80,46 +82,135 @@ def login(request):
             context["psw_not_match"] = True
             return render(request, 'login.html', context)
 
+
+@login_required(login_url='/calfit/welcome/')
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/calfit/welcome/')
+
+
 @login_required(login_url='/calfit/welcome/')
 def index(request):
     """
     :param request: request received
     :return: http redirection to index page if logged in
     """
-    context = {
-        "goal_today" : 0,
-        "current_steps" : 0,
-        "message" : None,
-    }
+    context = dict(
+        goal_today=0,
+        current_steps=0,
+        message=None
+    )
+
+    # TODO: Call API to get current steps
+    # TODO: If previous dates' steps were not syncronized, update
+    context["current_steps"] = 1200
 
     # Check and formulate local time -> cloud database should save as { "20180101" : "8741" } pattern
-    date = time.strftime("%Y%m%d")
+    user = auth.get_user(request)
+    today_date = timezone.now().date()
 
-    # TODO: Create a Cloud Http Request for today's goal, if a goal does not exist yet, do a request for computing
-    goal_today = 1234
-    current_steps = 1200
+    today_goal_exist = Goal.objects.filter(user=user, date=today_date).exists()
 
-    message_title = "message title"
+    if today_goal_exist:
+        context["goal_today"] = Goal.objects.get(user=user, date=today_date).get_goal()
+    else:
+        past_steps, past_goals = get_past_steps_and_goals(user, today_date)
+        goals_for_next_week = calc_goal(past_steps, past_goals)
+        goal_today = save_goals_for_next_week(user, today_date, goals_for_next_week)
+
+
+        context["goal_today"] = goal_today
+
+    if goal_decrease_for_two_consecutive_weeks():
+        # TODO: Create messages for next week (New Object -- Message)
+        pass
+
     message = Message(title="Message Title", content="Message Content")
-
-    context["goal_today"] = goal_today
-    context["current_steps"] = current_steps
     context["message"] = message
 
     return render(request, 'index.html', context)
 
 
+@login_required(login_url='/calfit/welcome/')
+def history(request):
+    # TODO
+    pass
+
+
+@login_required(login_url='/calfit/welcome/')
+def profile(request):
+    # TODO
+    pass
 # ==================================================== #
 #                  Helper Functions                    #
 # ==================================================== #
+
+# TODO: Create "No Internet" present page  
+
 def valid_email(address):
+    """
+    :param address: The email address to be tested
+    :return: A bool indicating if the email address is in valid format
+    """
     return re.match('^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?))$', address) is not None
 
-
 def username_exist(username):
+    """
+    :param username: The username to be tested
+    :return: A bool indicating if the username is taken
+    """
     return User.objects.filter(username=username).exists()
 
 class Message:
     def __init__(self, title, content):
         self.title = title
         self.content = content
+
+def goal_decrease_for_two_consecutive_weeks():
+    """
+    :return: A bool indicating if goal decreases for two consecutive weeks for the user
+    """
+    # TODO: What is the principle of "decreasing for two consecutive weeks"
+    return True
+
+def get_past_steps_and_goals(user, today_date):
+    """
+    :param user: Current Logged In User
+    :param today_date: Today's Date
+    :return: Past dates' steps and goals (in seperate lists)
+    """
+    # TODO: Get previous 7 days' steps, if not enough days' data is available, do our best & send message
+    # TODO: After each calculation, create 7 Goal objects
+    past_steps = []
+    past_goals = []
+
+    # FIXME: Current strategy -> retrieve by days, when some day's data is not available, deem it as terminal (not under-update)
+    # FIXME: -> Only consider data (days) which has both past_step and past_goal
+    for i in range(7):
+        past_date = today_date - timezone.timedelta(days=i + 1)
+
+        past_record_exist = Record.objects.filter(user=user, date=past_date).exists()
+        past_goal_exist = Goal.objects.filter(user=user, date=past_date).exists()
+
+        if past_record_exist and past_goal_exist:
+            date_past_steps = Record.objects.get(user=user, date=past_date).get_steps()
+            date_past_goal = Goal.objects.get(user=user, date=past_date).get_goal()
+
+            past_steps.append(date_past_steps)
+            past_goals.append(date_past_goal)
+        else:
+            break
+    return past_steps, past_goals
+
+def save_goals_for_next_week(user, today_date, goals_for_next_week):
+    """
+    :param user: Current Logged In User
+    :param today_date: Today's Date
+    :param goals_for_next_week: [goal0, goal1, ...] A list of goals for next week (from today on, include)
+    :return: The goal for today (based on the newly calculated)
+    """
+    for i in range(len(goal_for_next_week)):
+        new_date = today_date + timezone.timedelta(days=i)
+        new_goal = Goal(user=user, date=new_date)
+        new_goal.save()
+    return goal_for_next_week[0]
