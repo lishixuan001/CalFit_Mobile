@@ -6,11 +6,11 @@
 <html>
 	<head>
 		<title></title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="stylesheet" type="text/css" href="{% static '/css/index_page.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/css/history.css' %}" />
 
     <link rel="stylesheet" type="text/css" href="{% static '/css/w3.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
@@ -33,63 +33,27 @@
     <div style="max-width: 30%; margin-left: 5%; padding-top:5%; color:#22252a; font-weight: bolder;" onclick="toggleHideShow();">
         <i class="fas fa-bars fa-2x"></i>
     </div>
-    <div class="container-fluid">
-      <div class="row" style="height:100px;" >
+    <div class="container-fluid" align="center">
+
+      <div class="row align-item-center" style="margin-top: 50px;min-height: 100px;width:100%;">
+          <div class="col-12">
+            <div class="timeline">
+
+                {% for history_record in last_week_records %}
+                      <div class="container right">
+                        <div class="content">
+                          <h2>{{ history_record.get_date }}</h2>
+                          <h3>Goal: <span id="goal_number" >{{ history_record.goal }}</span></h3>
+                          <h3>Actual: <span id="steps_number" >{{ history_record.steps }}</span></h3>
+                        </div>
+                      </div>
+                {% endfor %}
+
+          </div>
       </div>
 
-      
-      <div class="row text-center" style="margin-bottom:10px;">
-        <div class="col-12" id="greeting">
-          Good Morning<!-- Auto-detect Time -->
-        </div>
-      </div>
-      <div class="row align-item-center text-center" style="margin-bottom:10px;">
-        <div class="col-12">
-          <div id="profile">
-            <i class="fas fa-user-circle fa-8x" ></i>
-          </div>
-        </div>
-      </div>
-      <div class="row text-center">
-            <div class="col-12" id="userName">
-                {{ user.username }}
-            </div>
-      </div>
-
-    <!-- Button trigger modal -->
-    <button hidden id="pop_message" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{ message.title }}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            {{ message.content }}
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Got It</button>
-          </div>
-        </div>
-      </div>
     </div>
 
-
-      <div class="family-member-container row align-item-center text-center">
-          <div class="col-6"><span class="heading-font">Goal</span></div>
-          <div class="col-6"><span class="heading-font">Current</span></div>
-          <div class="w-100"></div>
-          <div class="col-6"><span class="goal-step-font">{{ goal_today }}</span></div>
-          <div class="col-6"><span class="current-step-font">{{ current_steps }}</span></div>
-      </div>
-    
-    </div>
        <div id="menu">
      <div style="height:20px;">&nbsp;</div>
      <a>
@@ -116,12 +80,12 @@
       </a>
       <a href="/calfit/logout/">
        <div class="menuICON">
-         <i class="fas fa-eject" style="margin-left: 4px"></i><span class="menuTxt" style="padding-left: 27px;">LOGOUT</span>
+         <i class="fas fa-eject"></i><span class="menuTxt" style="padding-left: 27px;">LOGOUT</span>
        </div>
       </a>
       </div>
 
-    
+
     </div>
     <div id="menuBG" onclick="toggleHideShow();">&nbsp;</div>
     <div id="homeButton"></div>

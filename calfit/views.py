@@ -98,7 +98,7 @@ def index(request):
     context = dict(
         goal_today=0,
         current_steps=0,
-        message=None
+        message=[]
     )
 
     # TODO: Call API to get current steps
@@ -110,7 +110,6 @@ def index(request):
     today_date = timezone.now().date()
 
     today_goal_exist = Goal.objects.filter(user=user, date=today_date).exists()
-
     if today_goal_exist:
         context["goal_today"] = Goal.objects.get(user=user, date=today_date).get_goal()
     else:
@@ -120,26 +119,64 @@ def index(request):
         goal_today = save_goals_for_next_week(user, today_date, convert_from_k(goals_for_next_week))
         context["goal_today"] = goal_today
 
-    if goal_decrease_for_two_consecutive_weeks():
-        # TODO: Create messages for next week (New Object -- Message)
-        pass
+    # Check if need to update "goal decrease for two weeks" messages
+    today_goal_decrease_message_exist = Message.objects.filter(user=user, date=today_date,
+                                                               type="goal_decrease_for_two_consecutive_weeks").exists()
+    if goal_decrease_for_two_consecutive_weeks() and not today_goal_decrease_message_exist:
+        for i in range(7):
+            future_date = today_date - timezone.timedelta(days=i)
+            goal_decrease_message_template = goal_decrease_message_templates[i]
 
-    message = Message(title="Message Title", content="Message Content")
-    context["message"] = message
+            future_message = Message(user=user, date=future_date, type="goal_decrease_for_two_consecutive_weeks",
+                                     message_title=goal_decrease_message_template["message_title"],
+                                     message_content=goal_decrease_message_template["message_content"],
+                                     message_repond_yes=goal_decrease_message_template["message_repond_yes"],
+                                     message_repond_no=goal_decrease_message_template["message_repond_no"])
+            past_record_exist = Record.objects.filter(user=user, date=past_date).exists()
+            past_goal_exist = Goal.objects.filter(user=user, date=past_date).exists()
+
+            if past_record_exist and past_goal_exist:
+                date_past_steps = Record.objects.get(user=user, date=past_date).get_steps()
+                date_past_goal = Goal.objects.get(user=user, date=past_date).get_goal()
+
+                past_steps.append(date_past_steps)
+                past_goals.append(date_past_goal)
+
+    # Check if there's any reminding message today
+    today_message_exist = Message.objects.filter(user=user, date=today_date).exists()
+    if today_message_exist:
+        messages = Message.objects.filter(user=user, date=today_date)
+        for message in messages:
+            context["message"].append(message)
+
+
+
+
 
     return render(request, 'index.html', context)
 
 
 @login_required(login_url='/calfit/welcome/')
 def history(request):
-    # TODO
-    pass
+    user = auth.get_user(request)
+    today_date = timezone.now().date()
+
+    last_week_records = get_last_week_records(user, today_date)
+
+    context = dict(
+        last_week_records=last_week_records
+    )
+
+    return render(request, 'history.html', context)
+
 
 
 @login_required(login_url='/calfit/welcome/')
 def profile(request):
     # TODO
     pass
+
+
 # ==================================================== #
 #                  Helper Functions                    #
 # ==================================================== #
@@ -160,7 +197,7 @@ def username_exist(username):
     """
     return User.objects.filter(username=username).exists()
 
-class Message:
+class MessageInfo:
     def __init__(self, title, content):
         self.title = title
         self.content = content
@@ -176,7 +213,7 @@ def get_past_steps_and_goals(user, today_date):
     """
     :param user: Current Logged In User
     :param today_date: Today's Date
-    :return: Past dates' steps and goals (in seperate lists)
+    :return: Past dates' steps and goals (in seperate lists) -> skip invalid (incomplete) data dates
     """
     # TODO: Get previous 7 days' steps, if not enough days' data is available, do our best & send message
     # TODO: After each calculation, create 7 Goal objects
@@ -200,6 +237,31 @@ def get_past_steps_and_goals(user, today_date):
             past_goals.append(date_past_goal)
 
     return past_steps, past_goals
+
+
+def get_last_week_records(user, today_date):
+    """
+    :param user: Current Logged In User
+    :param today_date: Today's Date
+    :return: [HistoryRecord0, HistoryRecord1, ...]
+    """
+    last_week_records = []
+
+    for i in range(7):
+        past_date = today_date - timezone.timedelta(days=i+1)
+        date_past_steps = date_past_goal = None
+
+        past_record_exist = Record.objects.filter(user=user, date=past_date).exists()
+        past_goal_exist = Goal.objects.filter(user=user, date=past_date).exists()
+
+        if past_record_exist:
+            date_past_steps = Record.objects.get(user=user, date=past_date).get_steps()
+        if past_goal_exist:
+            date_past_goal = Goal.objects.get(user=user, date=past_date).get_goal()
+
+        last_week_records.append(HistoryRecord(past_date, date_past_steps, date_past_goal))
+
+    return last_week_records
 
 
 def convert_to_k(data):
@@ -227,6 +289,19 @@ def save_goals_for_next_week(user, today_date, goals_for_next_week):
     """
     for i in range(len(goals_for_next_week)):
         new_date = today_date + timezone.timedelta(days=i)
-        new_goal = Goal(user=user, date=new_date)
+        new_goal = Goal(user=user, date=new_date, goal=goals_for_next_week[i])
         new_goal.save()
     return goals_for_next_week[0]
+
+class HistoryRecord:
+    def __init__(self, date, steps, goal):
+        self.date = date
+        self.steps = steps
+        self.goal = goal
+
+    def get_date(self):
+        return timezone.datetime.strftime(self.date, "%b %d, %Y")
+
+goal_decrease_message_templates = [
+    dict(message_title=)
+]

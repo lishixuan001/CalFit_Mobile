@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7a3cdae-9b74-48f8-95a7-5b026a1e8d9c" name="Default Changelist" comment="" />
+    <list default="true" id="d7a3cdae-9b74-48f8-95a7-5b026a1e8d9c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/calfit/static/css/history.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/calfit/templates/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calfit/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/calfit/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calfit/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/calfit/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calfit/test_calc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calfit/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/calfit/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gurobi.log" beforeDir="false" afterPath="$PROJECT_DIR$/gurobi.log" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +94,7 @@
     <session id="1003470300">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.5" value="1" />
@@ -92,94 +103,91 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="18" />
-          <entry key="html" value="8" />
+          <entry key="css" value="20" />
+          <entry key="html" value="9" />
           <entry key="js" value="11" />
           <entry key="png" value="1" />
-          <entry key="py" value="5" />
+          <entry key="py" value="6" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="18" />
-          <entry key="HTML" value="8" />
+          <entry key="CSS" value="20" />
+          <entry key="HTML" value="9" />
           <entry key="Image" value="1" />
           <entry key="JavaScript" value="11" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="5" />
+          <entry key="Python" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="267" />
-          <entry key="html" value="1312" />
+          <entry key="css" value="327" />
+          <entry key="html" value="1556" />
           <entry key="js" value="270" />
-          <entry key="py" value="5292" />
+          <entry key="py" value="7280" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="267" />
-          <entry key="HTML" value="1312" />
+          <entry key="CSS" value="327" />
+          <entry key="HTML" value="1556" />
           <entry key="JavaScript" value="270" />
-          <entry key="Python" value="5292" />
+          <entry key="Python" value="7280" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/calfit/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="25" column="109" selection-start-line="25" selection-start-column="109" selection-end-line="25" selection-end-column="109" />
+            <state relative-caret-position="588">
+              <caret line="59" column="55" lean-forward="true" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1549346891709" expanded="true" signature="135:283" ph="..." />
-                <marker date="1549346891709" expanded="true" signature="700:706" ph="..." />
+                <marker date="1549396823772" expanded="true" signature="135:283" ph="..." />
+                <marker date="1549396823772" expanded="true" signature="700:706" ph="..." />
+                <marker date="1549396823772" expanded="true" signature="1617:1622" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/calfit/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1338">
-              <caret line="157" column="46" lean-forward="true" selection-start-line="157" selection-start-column="46" selection-end-line="157" selection-end-column="46" />
+            <state relative-caret-position="276">
+              <caret line="130" column="72" selection-start-line="130" selection-start-column="72" selection-end-line="130" selection-end-column="72" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1549346707891" expanded="true" signature="5891:5892" ph="..." />
-                <marker date="1549346707891" expanded="true" signature="7401:7456" ph="..." />
-                <marker date="1549346707891" expanded="true" signature="7787:7792" ph="..." />
+                <marker date="1549397028398" expanded="true" signature="6414:6419" ph="..." />
+                <marker date="1549397028398" expanded="true" signature="7853:7854" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shellscript.py">
+        <entry file="file://$PROJECT_DIR$/calfit/templates/history.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="349">
+              <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#7;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/calfit/calc.py">
+        <entry file="file://$PROJECT_DIR$/calfit/static/css/history.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="26" column="62" lean-forward="true" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
-              <folding>
-                <element signature="e#0#46#0" expanded="true" />
-                <marker date="1549345604322" expanded="true" signature="9568:9705" ph="..." />
-              </folding>
+            <state relative-caret-position="2538">
+              <caret line="202" column="24" lean-forward="true" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -187,8 +195,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/calfit/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="144" column="31" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
+            <state relative-caret-position="611">
+              <caret line="117" column="29" lean-forward="true" selection-start-line="117" selection-start-column="29" selection-end-line="117" selection-end-column="29" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#div#0;n#a#1;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#0;n#a#2;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#a#3;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -196,8 +209,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/calfit/static/css/index_page.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6256">
-              <caret line="272" selection-start-line="272" selection-end-line="272" />
+            <state relative-caret-position="23">
+              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -232,6 +245,11 @@
       <find>center</find>
       <find>true_past_steps</find>
       <find>goal_for_next_week</find>
+      <find>get_past_steps_and_goals</find>
+      <find>get_valid_past_steps_and_goals</find>
+      <find>famil</find>
+      <find>data</find>
+      <find>range(7)</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -260,14 +278,16 @@
         <option value="$PROJECT_DIR$/calfit/static/css/registration.css" />
         <option value="$PROJECT_DIR$/calfit/templates/registration.html" />
         <option value="$PROJECT_DIR$/calfit/static/js/index_page.js" />
-        <option value="$PROJECT_DIR$/calfit/static/css/index_page.css" />
         <option value="$PROJECT_DIR$/calfit/urls.py" />
         <option value="$PROJECT_DIR$/shellscript.py" />
-        <option value="$PROJECT_DIR$/calfit/templates/index.html" />
         <option value="$PROJECT_DIR$/calfit/test_calc.py" />
         <option value="$PROJECT_DIR$/calfit/calc.py" />
-        <option value="$PROJECT_DIR$/calfit/views.py" />
+        <option value="$PROJECT_DIR$/calfit/static/css/history.css" />
+        <option value="$PROJECT_DIR$/calfit/templates/history.html" />
+        <option value="$PROJECT_DIR$/calfit/static/css/index_page.css" />
+        <option value="$PROJECT_DIR$/calfit/templates/index.html" />
         <option value="$PROJECT_DIR$/calfit/models.py" />
+        <option value="$PROJECT_DIR$/calfit/views.py" />
       </list>
     </option>
   </component>
@@ -278,10 +298,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="1440" />
-    <option name="y" value="69" />
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -428,9 +446,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="69" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1368477" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1223176" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -452,7 +471,7 @@
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" id="Database" order="6" />
-      <window_info active="true" anchor="right" x="2051" y="112" width="697" height="994" id="Terminal" order="7" sideWeight="0.4985694" visible="true" weight="0.3711395" />
+      <window_info anchor="right" x="2051" y="112" width="697" height="994" id="Terminal" order="7" sideWeight="0.4985694" visible="true" weight="0.34120172" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,20 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calfit/static/css/index_page.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6256">
-          <caret line="272" selection-start-line="272" selection-end-line="272" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calfit/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="144" column="31" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shellscript.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -657,27 +662,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calfit/views.py">
+    <entry file="file://$PROJECT_DIR$/calfit/static/css/history.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1338">
-          <caret line="157" column="46" lean-forward="true" selection-start-line="157" selection-start-column="46" selection-end-line="157" selection-end-column="46" />
+        <state relative-caret-position="2538">
+          <caret line="202" column="24" lean-forward="true" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calfit/static/css/index_page.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calfit/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="117" column="29" lean-forward="true" selection-start-line="117" selection-start-column="29" selection-end-line="117" selection-end-column="29" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <marker date="1549346707891" expanded="true" signature="5891:5892" ph="..." />
-            <marker date="1549346707891" expanded="true" signature="7401:7456" ph="..." />
-            <marker date="1549346707891" expanded="true" signature="7787:7792" ph="..." />
+            <element signature="n#style#0;n#i#0;n#div#0;n#a#1;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#a#2;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#a#3;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calfit/templates/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/calfit/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="25" column="109" selection-start-line="25" selection-start-column="109" selection-end-line="25" selection-end-column="109" />
+        <state relative-caret-position="588">
+          <caret line="59" column="55" lean-forward="true" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <marker date="1549346891709" expanded="true" signature="135:283" ph="..." />
-            <marker date="1549346891709" expanded="true" signature="700:706" ph="..." />
+            <marker date="1549396823772" expanded="true" signature="135:283" ph="..." />
+            <marker date="1549396823772" expanded="true" signature="700:706" ph="..." />
+            <marker date="1549396823772" expanded="true" signature="1617:1622" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calfit/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="130" column="72" selection-start-line="130" selection-start-column="72" selection-end-line="130" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1549397028398" expanded="true" signature="6414:6419" ph="..." />
+            <marker date="1549397028398" expanded="true" signature="7853:7854" ph="..." />
           </folding>
         </state>
       </provider>

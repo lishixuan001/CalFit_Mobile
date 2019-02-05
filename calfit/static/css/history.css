@@ -1,0 +1,219 @@
+#bg {
+  height: 100%;
+  width:100%;
+  margin: 0;
+  background-image:linear-gradient(rgba(187,225,220,0.5),rgba(231, 176, 114, 0.5)),url("https://www.thoughtco.com/thmb/Q0lzHnrtNZjWgcxkQXE0U7P323c=/4096x2730/filters:fill(auto,1)/GettyImages-529341319-57251d1d3df78ced1fcd0261.jpg");
+  filter: blur(3px);
+  background-attachment: fixed;
+  background-size: cover;
+  position: fixed;
+  z-index: -10;
+  opacity: 0.8;
+}
+
+#menu {
+  position:fixed;
+  display:flex;
+  flex-direction: column;
+  left:-200px;
+  bottom:0px;
+  height:100%;
+  width:200px;
+  background:white;
+  vertical-align:middle;
+  z-index:100;
+  border-radius: 0px 20px 20px 0px;
+
+}
+
+.menuicon {
+  flex-direction: column;
+  justify-content:space-evenly;
+}
+
+.menuICON {
+  color: #4D4C4C;
+  vertical-align:middle;
+  font-size:2.5em;
+  margin-top:5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.menuTxt {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-left: 20px;
+  min-height: 50px;
+  display: inline-block;
+  padding-top: 5px;
+  max-width: 65%;
+}
+
+#menuBG {
+  min-height: 100%;
+  min-width: 100%;
+  margin: 0;
+  background-color: orange;
+  opacity:0.7;
+  background-attachment: fixed;
+  background-size: cover;
+  z-index: 90;
+  position: fixed;
+  top:0;
+  left: -425px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 1.4em;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1.5px;
+    color: #E77C2A;
+    margin: 0;
+    border-bottom: 1px solid #ffa659;
+    padding-bottom: 0.5em;
+}
+
+h3 {
+    margin-top: 10px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 1.5px;
+    color: #999;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: white;
+    top: 18px;
+    bottom: 0;
+    left: 8%;
+    margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #FF9F55;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+/* Place the container to the right */
+.right {
+    left: 50%;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+    left: -16px;
+}
+
+/* The actual content */
+.content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+}
+
+  /* Full-width containers */
+  .container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 0px;
+  }
+
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+    left: 6px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .right::after {
+    left: 15px;
+  }
+
+  /* Make all right containers behave like the left ones */
+  .right {
+    left: 0%;
+  }
+
+  /* Define font of the presenting heading -- Goal and Current */
+  .heading-font {
+      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      font-size: large;
+      font-weight: bold;
+      color: #300d00;
+  }
+
+  /* Define font of the presenting numbers -- Goal and Current */
+  .goal-step-font {
+      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      font-size: x-large;
+      font-weight: bold;
+      color: #FF9F55;
+  }
+  .current-step-font {
+      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      font-size: x-large;
+      font-weight: bold;
+      color: #00cc00;
+  }
+
+  #goal_number {
+      color: #28a745;
+  }
+
+  #steps_number {
+      color: #e0a800;
+  }
