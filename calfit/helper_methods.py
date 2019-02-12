@@ -88,8 +88,6 @@ def get_last_week_records(user, today_date):
 
         last_week_records.append(HistoryRecord(past_date, date_past_steps, date_past_goal))
 
-    return last_week_records
-
 
 def convert_to_k(data):
     """
@@ -126,12 +124,13 @@ def steps_updated_in_last_three_days(user, today_date):
     :param today_date: Today's Date
     :return: [bool] -> if steps data were uploaded to cloud in last consecutive three days
     """
+    lost_count = 0
     for i in range(3):
         past_date = today_date - timezone.timedelta(days=i+1)
         past_record_exist = Record.objects.filter(user=user, date=past_date).exists()
-        if not past
-
-
+        if not past_record_exist:
+            lost_count += 1
+    return lost_count < 3
 
 class HistoryRecord:
     def __init__(self, date, steps, goal):
@@ -142,14 +141,21 @@ class HistoryRecord:
     def get_date(self):
         return timezone.datetime.strftime(self.date, "%b %d, %Y")
 
-class MessageType(Enum):
-    SYSTEM_MESSAGE = 0
-    STEPS_UPDATE = 1
-    GOAL_DECREASE = 2
+class MessageType:
+    PLAINTEXT = 0
+    INTERACTIVE = 1
 
-class MessageTitle(Enum):
-    REMINDER = 0
-    SURVEY = 1
+class MessageTitle:
+    REMINDER = "Reminder"
+    SURVEY = "Progress Survey"
+
+class MessageStruct:
+    def __init__(self, title, content, type, message_respond_yes, message_respond_no):
+        self.title = title
+        self.content = content
+        self.type = type
+        self.message_respond_yes = message_respond_yes
+        self.message_respond_no = message_respond_no
 
 GOAL_DECREASE_MESSAGE_TEMPLATES = [
     dict(
@@ -188,3 +194,9 @@ GOAL_DECREASE_MESSAGE_TEMPLATES = [
         message_respond_no="Think about how you will feel physically when you get more exercise.",
     ),
 ]
+
+STEP_DATA_UPLOAD_3_DAY_REMINDER = "We have not had your activity data for 3 days. Are you okay?"
+
+# TODO -- Email List
+RESEARCHERS_EMAIL_LIST = ["calfit.system@gmail.com"]
+# RESEARCHERS_EMAIL_LIST = ["Yoshimi.Fukuoka@ucsf.edu"]

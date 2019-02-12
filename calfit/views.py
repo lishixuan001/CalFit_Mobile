@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.contrib import auth
 from django.http import *
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.core.mail import send_mail
 from django.utils import timezone
 from calfit.models import *
 from calfit.calc import *
@@ -99,11 +101,10 @@ def index(request):
     context = dict(
         goal_today=0,
         current_steps=0,
-        message=[]
+        messages=[]
     )
 
-    # TODO: Call API to get current steps
-    # TODO: If previous dates' steps were not syncronized, update
+    # TODO: When connect with cloud, update all incomplete local record steps data
     context["current_steps"] = 1200
 
     # Check and formulate local time -> cloud database should save as { "20180101" : "8741" } pattern
@@ -114,25 +115,37 @@ def index(request):
     if today_goal_exist:
         context["goal_today"] = Goal.objects.get(user=user, date=today_date).get_goal()
     else:
-        # TODO: Send Message if recent steps are not uploaded
         past_steps, past_goals = get_past_steps_and_goals(user, today_date)
-        goals_for_next_week = calc_goal(convert_to_k(past_steps), convert_to_k(past_goals))
-        goal_today = save_goals_for_next_week(user, today_date, convert_from_k(goals_for_next_week))
+        # If the user hasn't upload (update) his/her data for over 3 days, send email to the researchers and the user
+        if len(past_steps) <= 4:
+            send_mail(subject="[Calfit] Three Day Missing Data Reminder",
+                      message="Hi {username}! We have not had your activity data for {num_days} days. Are you okay?"
+                      .format(username=user.username, num_days=7-len(past_steps)),
+                      from_email=settings.EMAIL_HOST_USER,
+                      recipient_list=[user.email,] + RESEARCHERS_EMAIL_LIST,
+                      fail_silently=False # FIXME: When online this should be changed to "True"
+                      )
+
+        if len(past_steps) > 0 and len(past_goals) > 0:
+            goals_for_next_week = calc_goal(convert_to_k(past_steps), convert_to_k(past_goals))
+            goal_today = save_goals_for_next_week(user, today_date, convert_from_k(goals_for_next_week))
+        else:
+            goal_today = "[Error] Insufficient Data"
         context["goal_today"] = goal_today
 
     # Check if need to update "goal decrease for two weeks" messages
     today_goal_decrease_message_exist = Message.objects.filter(user=user, date=today_date,
-                                                               type=MessageType.GOAL_DECREASE).exists()
+                                                               type=MessageType.INTERACTIVE).exists()
     if goal_decrease_for_two_consecutive_weeks() and not today_goal_decrease_message_exist:
         for i in range(7):
             future_date = today_date - timezone.timedelta(days=i)
             goal_decrease_message_template = GOAL_DECREASE_MESSAGE_TEMPLATES[i]
 
-            future_message = Message(user=user, date=future_date, type=MessageType.GOAL_DECREASE,
+            future_message = Message(user=user, date=future_date, type=MessageType.INTERACTIVE,
                                      message_title=MessageTitle.SURVEY,
                                      message_content=goal_decrease_message_template["message_content"],
-                                     message_repond_yes=goal_decrease_message_template["message_repond_yes"],
-                                     message_repond_no=goal_decrease_message_template["message_repond_no"])
+                                     message_respond_yes=goal_decrease_message_template["message_respond_yes"],
+                                     message_respond_no=goal_decrease_message_template["message_respond_no"])
             future_message.save()
 
     # Check if there's any reminding message today
@@ -140,10 +153,8 @@ def index(request):
     if today_message_exist:
         messages = Message.objects.filter(user=user, date=today_date)
         for message in messages:
-            context["message"].append(message)
-
-    # TODO: When connect with cloud, update all incomplete local record steps data
-
+            if message.responded is False:
+                context["messages"].append(message)
 
     return render(request, 'index.html', context)
 

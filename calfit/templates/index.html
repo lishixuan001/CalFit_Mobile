@@ -56,29 +56,77 @@
             </div>
       </div>
 
-    <!-- Button trigger modal -->
-    <button hidden id="pop_message" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">{{ message.title }}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            {{ message.content }}
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Got It</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
+
+
+    {% if messages %}
+        {% for message in messages %}
+            <!-- Modal -->
+            <div class="modal fade" id="model_{{ message.id }}" data-focus="true" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{ message.message_title }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    {{ message.message_content }}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#model_response_no_{{ message.id }}">No</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#model_response_yes_{{ message.id }}">Yes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button hidden id="pop_message_{{ message.id }}" type="button" class="btn btn-primary" data-toggle="modal" data-target="#model_{{ message.id }}"></button>
+
+            <!-- Modal if message.type == 0 (interactive) -->
+            <div class="modal fade" id="model_response_no_{{ message.id }}" data-focus="true" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">CalFit Response</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    {{ message.message_respond_no }}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Okay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="model_response_yes_{{ message.id }}" data-focus="true" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">CalFit Response</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    {{ message.message_respond_yes }}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Okay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
 
 
       <div class="family-member-container row align-item-center text-center">
@@ -156,8 +204,8 @@
         })
 
         {# Message Popping #}
-        {% if message %}
-            $("#pop_message").click();
-        {% endif %}
+        {% for message in messages%}
+            $("#pop_message_{{ message.id }}").click();
+        {% endfor %}
     </script>
 </html>
