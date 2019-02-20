@@ -12,84 +12,158 @@
 
         <link rel="stylesheet" type="text/css" href="{% static '/css/history.css' %}" />
 
-    <link rel="stylesheet" type="text/css" href="{% static '/css/w3.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static '/css/fira_sans.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static '/css/fontawesome.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/css/w3.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/css/fira_sans.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static '/css/fontawesome.css' %}" />
 
-      <script src="{% static '/js/velocity.js' %}"></script>
-      <script src="{% static '/js/popper.min.js' %}"></script>
-      <script src="{% static '/js/jquery-3.3.1.min.js' %}"></script>
-      <script src="{% static '/js/jquery-ui.min.js' %}"></script>
-      <script src="{% static '/js/bootstrap.min.js' %}"></script>
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+        <script src="{% static '/js/velocity.js' %}"></script>
+        <script src="{% static '/js/popper.min.js' %}"></script>
+        <script src="{% static '/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static '/js/jquery-ui.min.js' %}"></script>
+        <script src="{% static '/js/bootstrap.min.js' %}"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                AmCharts.makeChart("chartdiv", {
+                    "type": "serial",
+                    "theme": "light",
+                    "columnWidth": 1,
+                    "dataProvider": [{
+                        "category": "0"
+                    }, {
+                        "category": "1",
+                        "count": 25
+                    }, {
+                        "category": "2",
+                        "count": 81
+                    }, {
+                        "category": "3",
+                        "count": 73
+                    }, {
+                        "category": "4",
+                        "count": 40
+                    }, {
+                        "category": "5",
+                        "count": 20
+                    }, {
+                        "category": "6",
+                        "count": 7
+                    }, {
+                        "category": "7",
+                        "count": 5
+                    }, {
+                        "category": "8",
+                        "count": 2
+                    }, {
+                        "category": "9",
+                        "count": 2
+                    }, {
+                        "category": "10",
+                        "count": 1
+                    }, {
+                        "category": "11"
+                    }],
+                    "graphs": [{
+                        "fillColors": "#c55",
+                        "fillAlphas": 0.9,
+                        "lineColor": "#fff",
+                        "lineAlpha": 0.7,
+                        "type": "column",
+                        "valueField": "count"
+                    }],
+                    "categoryField": "category",
+                    "categoryAxis": {
+                        "startOnAxis": true,
+                        "title": "Try"
+                    },
+                    "valueAxes": [{
+                        "title": "Count"
+                    }]
+                });
+            });
+        </script>
 
     </head>
 
 
     <body>
+
         <!-- Your layout here -->
-    <div id="bg">&nbsp;</div>
-    <div style="max-width: 30%; margin-left: 5%; padding-top:5%; color:#22252a; font-weight: bolder;" onclick="toggleHideShow();">
-        <i class="fas fa-bars fa-2x"></i>
-    </div>
-    <div class="container-fluid" align="center">
+        <div id="bg">&nbsp;</div>
+        <div style="max-width: 30%; margin-left: 5%; padding-top:5%; color:#22252a; font-weight: bolder;" onclick="toggleHideShow();">
+            <i class="fas fa-bars fa-2x"></i>
+        </div>
 
-      <div class="row align-item-center" style="margin-top: 50px;min-height: 100px;width:100%;">
-          <div class="col-12">
-            <div class="timeline">
+{#        <div class="container-fluid" align="center">#}
+{#            <div class="row align-item-center" style="margin-top: 50px;min-height: 100px;width:100%;">#}
+{#                <div class="col-12">#}
+{#                    <div class="timeline">#}
+{##}
+{#                        {% for history_record in last_week_records %}#}
+{#                            <div class="container right">#}
+{#                                <div class="content">#}
+{#                                    <h2>{{ history_record.get_date }}</h2>#}
+{#                                    <h3>Goal: <span id="goal_number" >{{ history_record.goal }}</span></h3>#}
+{#                                    <h3>Actual: <span id="steps_number" >{{ history_record.steps }}</span></h3>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
 
-                {% for history_record in last_week_records %}
-                      <div class="container right">
-                        <div class="content">
-                          <h2>{{ history_record.get_date }}</h2>
-                          <h3>Goal: <span id="goal_number" >{{ history_record.goal }}</span></h3>
-                          <h3>Actual: <span id="steps_number" >{{ history_record.steps }}</span></h3>
-                        </div>
-                      </div>
-                {% endfor %}
+        <div id="menu">
+            <div style="height:20px;">&nbsp;</div>
+            <a>
+                <div style="padding: 44px 44px 0px 44px;margin-bottom: 20px;">
+                    <div align="center">
+                        <i class="fas fa-user-circle fa-7x" style="padding-bottom: 5px"></i>
+                    </div>
+                    <div align="center">
+                        <span style="font-weight: bold; font-size: 16px;">{{ user.username }}</span>
+                    </div>
+                </div>
+            </a>
 
-          </div>
-      </div>
+            <div id="menuicon">
+                <a href="/calfit/index/">
+                    <div class="menuICON">
+                        <i class="fas fa-home"></i><span class="menuTxt">HOME</span>
+                    </div>
+                </a>
+                <a href="/calfit/history/">
+                    <div class="menuICON" >
+                        <i class="fas fa-address-book" style="margin-left: 4px"></i><span class="menuTxt" style="padding-left: 25px;">HISTORY</span>
+                    </div>
+                </a>
+                <a href="/calfit/logout/">
+                    <div class="menuICON">
+                        <i class="fas fa-eject"></i><span class="menuTxt" style="padding-left: 27px;">LOGOUT</span>
+                    </div>
+                </a>
+            </div>
+        </div>
 
-    </div>
+        <div id="menuBG" onclick="toggleHideShow();">&nbsp;</div>
+        <div id="homeButton"></div>
 
-       <div id="menu">
-     <div style="height:20px;">&nbsp;</div>
-     <a>
-       <div style="padding: 44px 44px 0px 44px;margin-bottom: 20px;">
-           <div align="center">
-               <i class="fas fa-user-circle fa-7x" style="padding-bottom: 5px"></i>
-           </div>
-           <div align="center">
-               <span style="font-weight: bold; font-size: 16px;">{{ user.username }}</span>
-           </div>
+        {# Chart Display #}
+{#        <div id="chart_div" style="height: 100%"></div>#}
+        <div id="chartdiv" style="width: 100%; height:100%"></div>
 
-       </div>
-     </a>
-     <div id="menuicon">
-      <a href="/calfit/index/">
-       <div class="menuICON">
-         <i class="fas fa-home"></i><span class="menuTxt">HOME</span>
-       </div>
-      </a>
-      <a href="/calfit/history/">
-       <div class="menuICON" >
-         <i class="fas fa-address-book" style="margin-left: 4px"></i><span class="menuTxt" style="padding-left: 25px;">HISTORY</span>
-       </div>
-      </a>
-      <a href="/calfit/logout/">
-       <div class="menuICON">
-         <i class="fas fa-eject"></i><span class="menuTxt" style="padding-left: 27px;">LOGOUT</span>
-       </div>
-      </a>
-      </div>
+    </body>
 
-
-    </div>
-    <div id="menuBG" onclick="toggleHideShow();">&nbsp;</div>
-    <div id="homeButton"></div>
-  </body>
     <script>
         function toggleHideShow() {
             if ($( "#menu" ).css("left")=="-200px") {
@@ -105,8 +179,8 @@
         $(document).ready(function() {
 
             {# Greeting #}
-            var today = new Date();
-            var h = today.getHours();
+            let today = new Date();
+            let h = today.getHours();
 
             if (h >= 0 && h < 12) {
                 $('#greeting').text("Good Morning");
@@ -117,11 +191,13 @@
             else {
                 $('#greeting').text("Good Evening");
             }
-        })
+        });
 
         {# Message Popping #}
         {% if message %}
             $("#pop_message").click();
         {% endif %}
+
     </script>
+
 </html>
