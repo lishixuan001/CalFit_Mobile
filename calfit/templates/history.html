@@ -24,73 +24,39 @@
         <script src="{% static '/js/bootstrap.min.js' %}"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
-        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+        <script src="https://img.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://img.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+        <script src="https://img.highcharts.com.cn/highcharts/themes/grid-light.js"></script>
+
+        <style>
+            #container {
+                height: 500px;
+                max-width: 800px;
+                margin: 10% 2% 0% 2%;
+            }
+            /* Link the series colors to axis colors */
+            .highcharts-color-0 {
+                fill: lightgray;
+                stroke: lightgray;
+                stroke-width: 1px;
+            }
+            .highcharts-axis.highcharts-color-0 .highcharts-axis-line {
+                stroke: #7cb5ec;
+            }
+            .highcharts-axis.highcharts-color-0 text {
+                fill: #7cb5ec;
+            }
+            .highcharts-color-1 {
+                fill: #90ed7d;
+                stroke: #90ed7d;
+            }
+            .highcharts-axis.highcharts-color-1 .highcharts-axis-line {
+                stroke: #90ed7d;
+            }
 
 
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                AmCharts.makeChart("chartdiv", {
-                    "type": "serial",
-                    "theme": "light",
-                    "columnWidth": 1,
-                    "dataProvider": [{
-                        "category": "0"
-                    }, {
-                        "category": "1",
-                        "count": 25
-                    }, {
-                        "category": "2",
-                        "count": 81
-                    }, {
-                        "category": "3",
-                        "count": 73
-                    }, {
-                        "category": "4",
-                        "count": 40
-                    }, {
-                        "category": "5",
-                        "count": 20
-                    }, {
-                        "category": "6",
-                        "count": 7
-                    }, {
-                        "category": "7",
-                        "count": 5
-                    }, {
-                        "category": "8",
-                        "count": 2
-                    }, {
-                        "category": "9",
-                        "count": 2
-                    }, {
-                        "category": "10",
-                        "count": 1
-                    }, {
-                        "category": "11"
-                    }],
-                    "graphs": [{
-                        "fillColors": "#c55",
-                        "fillAlphas": 0.9,
-                        "lineColor": "#fff",
-                        "lineAlpha": 0.7,
-                        "type": "column",
-                        "valueField": "count"
-                    }],
-                    "categoryField": "category",
-                    "categoryAxis": {
-                        "startOnAxis": true,
-                        "title": "Try"
-                    },
-                    "valueAxes": [{
-                        "title": "Count"
-                    }]
-                });
-            });
-        </script>
+        </style>
 
     </head>
 
@@ -103,25 +69,6 @@
             <i class="fas fa-bars fa-2x"></i>
         </div>
 
-{#        <div class="container-fluid" align="center">#}
-{#            <div class="row align-item-center" style="margin-top: 50px;min-height: 100px;width:100%;">#}
-{#                <div class="col-12">#}
-{#                    <div class="timeline">#}
-{##}
-{#                        {% for history_record in last_week_records %}#}
-{#                            <div class="container right">#}
-{#                                <div class="content">#}
-{#                                    <h2>{{ history_record.get_date }}</h2>#}
-{#                                    <h3>Goal: <span id="goal_number" >{{ history_record.goal }}</span></h3>#}
-{#                                    <h3>Actual: <span id="steps_number" >{{ history_record.steps }}</span></h3>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{##}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
 
         <div id="menu">
             <div style="height:20px;">&nbsp;</div>
@@ -159,8 +106,99 @@
         <div id="homeButton"></div>
 
         {# Chart Display #}
-{#        <div id="chart_div" style="height: 100%"></div>#}
-        <div id="chartdiv" style="width: 100%; height:100%"></div>
+        <div id="container"></div>
+        <script>
+            var chart = Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Data of Last Week'
+                },
+                xAxis: {
+                    {#categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],#}
+                    categories: {{ past_dates|safe }},
+                    labels: {
+                        enabled: true,
+                        style: {
+                            color: "#000000"
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    },
+                    stackLabels: {  // 堆叠数据标签
+                        enabled: true,
+                        style: {
+                            fontWeight: null,
+                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                        }
+                    },
+                    labels: {
+                        enabled: false
+                    }
+                },
+                legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal',
+                    y: 10,
+                    floating: false,
+                    backgroundColor: null,
+                    borderColor: null,
+                    borderWidth: 1,
+                    shadow: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            '总量: ' + this.point.stackTotal;
+                    }
+                },
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true,
+                            color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                            style: {
+                                // 如果不需要数据标签阴影，可以将 textOutline 设置为 'none'
+                                textOutline: null
+                            }
+                        }
+                    }
+                },
+                labels: {
+                    styles: {
+                        color: "#333333"
+                    }
+                },
+                series: [{
+                    name: 'Distance to Goal',
+                    {#data: [3600, 0, 65, 0, 4000, -7000, 0],#}
+                    data: {{ past_gaps|safe }},
+                    color: "#d3d3d3",
+                    dataLabels: {
+                        enabled: false,
+                        color: "#ed7d90"
+                    }
+                }, {
+                    name: 'Accomplished',
+                    {#data: [4000, 12000, 6700, 7300, 2123, 990, 10000],#}
+                    data: {{ past_steps|safe }},
+                    color: "#90ed7d",
+                    dataLabels: {
+                        align: "center",
+                        verticalAlign: "middle",
+                        color: "#7d90ed" {# #7d90ed,  #ed7d90 #}
+                    }
+                }]
+            });
+        </script>
 
     </body>
 
@@ -192,11 +230,6 @@
                 $('#greeting').text("Good Evening");
             }
         });
-
-        {# Message Popping #}
-        {% if message %}
-            $("#pop_message").click();
-        {% endif %}
 
     </script>
 

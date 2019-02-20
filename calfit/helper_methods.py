@@ -74,9 +74,9 @@ def get_last_week_records(user, today_date):
     """
     last_week_records = []
 
-    for i in range(7):
+    for i in range(6, -1, -1):
         past_date = today_date - timezone.timedelta(days=i+1)
-        date_past_steps = date_past_goal = None
+        date_past_steps = date_past_goal = 0
 
         past_record_exist = Record.objects.filter(user=user, date=past_date).exists()
         past_goal_exist = Goal.objects.filter(user=user, date=past_date).exists()
@@ -87,6 +87,7 @@ def get_last_week_records(user, today_date):
             date_past_goal = Goal.objects.get(user=user, date=past_date).get_goal()
 
         last_week_records.append(HistoryRecord(past_date, date_past_steps, date_past_goal))
+    return last_week_records
 
 
 def convert_to_k(data):
@@ -134,12 +135,9 @@ def steps_updated_in_last_three_days(user, today_date):
 
 class HistoryRecord:
     def __init__(self, date, steps, goal):
-        self.date = date
+        self.date = timezone.datetime.strftime(date, "%m/%d") # 02/14
         self.steps = steps
         self.goal = goal
-
-    def get_date(self):
-        return timezone.datetime.strftime(self.date, "%b %d, %Y")
 
 class MessageType:
     PLAINTEXT = 0

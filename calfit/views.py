@@ -164,10 +164,12 @@ def history(request):
     user = auth.get_user(request)
     today_date = timezone.now().date()
 
-    last_week_records = get_last_week_records(user, today_date)
+    last_week_records = get_last_week_records(user, today_date) # [HistoryRecord0, HistoryRecord01, ...]
 
     context = dict(
-        last_week_records=last_week_records
+        past_dates = [record.date for record in last_week_records],
+        past_steps = [record.steps for record in last_week_records],
+        past_gaps = [max(record.goal-record.steps, 0) if record.goal and record.steps else record.goal if record.goal else None for record in last_week_records]
     )
 
     return render(request, 'history.html', context)
