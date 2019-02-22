@@ -169,7 +169,7 @@ def history(request):
     context = dict(
         past_dates = [record.date for record in last_week_records],
         past_steps = [record.steps for record in last_week_records],
-        past_gaps = [max(record.goal-record.steps, 0) if record.goal and record.steps else record.goal if record.goal else None for record in last_week_records]
+        past_gaps = [max(record.goal-record.steps, 0) if record.goal and record.steps else record.goal if record.goal else 0 for record in last_week_records]
     )
 
     return render(request, 'history.html', context)
