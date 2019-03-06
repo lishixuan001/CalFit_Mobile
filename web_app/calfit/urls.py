@@ -10,5 +10,5 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('history/', views.history, name='history'),
     path('profile/', views.profile, name='profile'),
-#     path('forum/question/<int:question_id>/',views.question, name='question'),
+    # path('api/get_user_notifications/', views.get_user_notifications, name='get user notifications')
 ]

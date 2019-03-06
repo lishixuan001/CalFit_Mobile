@@ -2,6 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+# class UserInfo(AbstractUser):
+#
+#     def is_new_user(self):
+#         # TODO: Change it to base on "experiment_start_data"
+#         time_since_registerd = timezone.datetime.now(timezone.utc) - self.date_joined
+#         return time_since_registerd.days <= 7
+#
+#     class Meta(AbstractUser.Meta):
+#         swappable = 'AUTH_USER_MODEL'
+
 class Record(models.Model):
     def __str__(self):
         return "{username} : {date} : {steps}".format(username=self.user.username, date=self.date.date(), steps=self.steps)

@@ -1,8 +1,6 @@
-from django.utils import timezone
 from calfit.models import *
-from calfit.calc import *
-from enum import Enum
-import time, re
+import re
+import numpy as np
 
 # ==================================================== #
 #                  Helper Functions                    #
@@ -29,27 +27,42 @@ class MessageInfo:
         self.title = title
         self.content = content
 
-def goal_decrease_for_two_consecutive_weeks():
+def goal_decrease_for_two_consecutive_weeks(user, today_date):
     """
     :return: A bool indicating if goal decreases for two consecutive weeks for the user
     """
-    # TODO: What is the principle of "decreasing for two consecutive weeks"
-    return True
+    if is_new_user(user, today_date):
+        return False
+
+    past_goals = []
+
+    for i in range(14):
+        past_date = today_date - timezone.timedelta(days=i+1)
+
+        past_goal_exist = Goal.objects.filter(user=user, date=past_date).exists()
+
+        if past_goal_exist:
+            date_past_goal = Goal.objects.get(user=user, date=past_date).get_goal()
+            past_goals.append(date_past_goal)
+
+    if len(past_goals) <= 0:
+        return False
+
+    x = np.arange(0, len(past_goals), 1)
+    y = np.asarray(past_goals)
+    params = np.polyfit(x, y, deg=1)
+    slope = params[0]
+
+    return slope < 0
 
 def get_past_steps_and_goals(user, today_date):
     """
-    :param user: Current Logged In User
-    :param today_date: Today's Date
+    :param user: Current Logged In User\
     :return: Past dates' steps and goals (in seperate lists) -> skip invalid (incomplete) data dates
     """
-    # TODO: Get previous 7 days' steps, if not enough days' data is available, do our best & send message
-    # TODO: After each calculation, create 7 Goal objects
     past_steps = []
     past_goals = []
 
-    # FIXME: Current strategy -> retrieve by days, when some day's data is not available, deem it as terminal (not under-update)
-    # FIXME: -> Only consider data (days) which has both past_step and past_goal
-    # FIXME: -> If recent data is empty, count it as 0
     for i in range(7):
         past_date = today_date - timezone.timedelta(days=i+1)
 
@@ -69,7 +82,6 @@ def get_past_steps_and_goals(user, today_date):
 def get_last_week_records(user, today_date):
     """
     :param user: Current Logged In User
-    :param today_date: Today's Date
     :return: [HistoryRecord0, HistoryRecord1, ...]
     """
     last_week_records = []
@@ -106,32 +118,24 @@ def convert_from_k(data):
     return list(map(lambda x: int(x * 1000), data))
 
 
-def save_goals_for_next_week(user, today_date, goals_for_next_week):
+def save_goals_for_next_week(user, goals_for_next_week, today_date):
     """
     :param user: Current Logged In User
     :param today_date: Today's Date
     :param goals_for_next_week: [goal0, goal1, ...] A list of goals for next week (from today on, include)
     :return: The goal for today (based on the newly calculated)
     """
+
     for i in range(len(goals_for_next_week)):
         new_date = today_date + timezone.timedelta(days=i)
         new_goal = Goal(user=user, date=new_date, goal=goals_for_next_week[i])
         new_goal.save()
     return goals_for_next_week[0]
 
-def steps_updated_in_last_three_days(user, today_date):
-    """
-    :param user: Current Logged In User
-    :param today_date: Today's Date
-    :return: [bool] -> if steps data were uploaded to cloud in last consecutive three days
-    """
-    lost_count = 0
-    for i in range(3):
-        past_date = today_date - timezone.timedelta(days=i+1)
-        past_record_exist = Record.objects.filter(user=user, date=past_date).exists()
-        if not past_record_exist:
-            lost_count += 1
-    return lost_count < 3
+def is_new_user(user, today_date):
+    time_since_registerd = timezone.datetime.now(timezone.utc) - user.date_joined
+    return time_since_registerd.days <= 7
+
 
 class HistoryRecord:
     def __init__(self, date, steps, goal):

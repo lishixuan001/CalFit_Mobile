@@ -11,6 +11,17 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import djcelery
+from celery.schedules import crontab
+
+BROKER_URL = 'django://'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+djcelery.setup_loader()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'calfit',
+    'djcelery',
+    'kombu.transport.django',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +144,15 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media").replace('\\', '/')
+
+# Set the Auth user model to our customized version
+# AUTH_USER_MODEL = "calfit.UserInfo"
+
+# # Other Celery settings
+# CELERY_BEAT_SCHEDULE = {
+#     'task-number-one': {
+#         'task': 'calfit.tasks.print_username',
+#         'schedule': crontab(minute=1, hour=0),
+#         'args': (),
+#     },
+# }

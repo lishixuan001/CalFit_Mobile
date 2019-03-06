@@ -2,13 +2,13 @@ from django.shortcuts import render
 from django.contrib import auth
 from django.http import *
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
-from django.core.mail import send_mail
-from django.utils import timezone
-from calfit.models import *
-from calfit.calc import *
+from calfit.calc import calc_goal
 from calfit.helper_methods import *
-import time, re
+
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
 
 def welcome(request):
     if request.method == 'GET':
@@ -52,6 +52,7 @@ def registration(request):
         else:
             context["psw_not_match"] = True
             return render(request, "registration.html", context)
+
 
 def login(request):
     """
@@ -109,34 +110,27 @@ def index(request):
 
     # Check and formulate local time -> cloud database should save as { "20180101" : "8741" } pattern
     user = auth.get_user(request)
-    today_date = timezone.now().date()
+    today_date = timezone.datetime.now(timezone.utc).date()
 
     today_goal_exist = Goal.objects.filter(user=user, date=today_date).exists()
+
     if today_goal_exist:
         context["goal_today"] = Goal.objects.get(user=user, date=today_date).get_goal()
     else:
         past_steps, past_goals = get_past_steps_and_goals(user, today_date)
-        # If the user hasn't upload (update) his/her data for over 3 days, send email to the researchers and the user
-        if len(past_steps) <= 4:
-            send_mail(subject="[Calfit] Three Day Missing Data Reminder",
-                      message="Hi {username}! We have not had your activity data for {num_days} days. Are you okay?"
-                      .format(username=user.username, num_days=7-len(past_steps)),
-                      from_email=settings.EMAIL_HOST_USER,
-                      recipient_list=[user.email,] + RESEARCHERS_EMAIL_LIST,
-                      fail_silently=False # FIXME: When online this should be changed to "True"
-                      )
 
         if len(past_steps) > 0 and len(past_goals) > 0:
             goals_for_next_week = calc_goal(convert_to_k(past_steps), convert_to_k(past_goals))
-            goal_today = save_goals_for_next_week(user, today_date, convert_from_k(goals_for_next_week))
+            goal_today = save_goals_for_next_week(user, convert_from_k(goals_for_next_week), today_date)
         else:
             goal_today = "[Error] Insufficient Data"
+
         context["goal_today"] = goal_today
 
     # Check if need to update "goal decrease for two weeks" messages
     today_goal_decrease_message_exist = Message.objects.filter(user=user, date=today_date,
                                                                type=MessageType.INTERACTIVE).exists()
-    if goal_decrease_for_two_consecutive_weeks() and not today_goal_decrease_message_exist:
+    if goal_decrease_for_two_consecutive_weeks(user, today_date) and not today_goal_decrease_message_exist:
         for i in range(7):
             future_date = today_date - timezone.timedelta(days=i)
             goal_decrease_message_template = GOAL_DECREASE_MESSAGE_TEMPLATES[i]
@@ -153,8 +147,11 @@ def index(request):
     if today_message_exist:
         messages = Message.objects.filter(user=user, date=today_date)
         for message in messages:
-            if message.responded is False:
-                context["messages"].append(message)
+            if message.type == MessageType.INTERACTIVE:
+                if message.responded is False:
+                    context["messages"].append(message)
+                message.responded = True
+                message.save()
 
     return render(request, 'index.html', context)
 
@@ -162,7 +159,7 @@ def index(request):
 @login_required(login_url='/calfit/welcome/')
 def history(request):
     user = auth.get_user(request)
-    today_date = timezone.now().date()
+    today_date = timezone.datetime.now(timezone.utc).date()
 
     last_week_records = get_last_week_records(user, today_date) # [HistoryRecord0, HistoryRecord01, ...]
 
@@ -175,8 +172,9 @@ def history(request):
     return render(request, 'history.html', context)
 
 
-
 @login_required(login_url='/calfit/welcome/')
 def profile(request):
     # TODO
     pass
+
+
