@@ -4,6 +4,7 @@ from django.http import *
 from django.contrib.auth.decorators import login_required
 from calfit.calc import calc_goal
 from calfit.helper_methods import *
+import json
 
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -110,6 +111,7 @@ def index(request):
 
     # Check and formulate local time -> cloud database should save as { "20180101" : "8741" } pattern
     user = auth.get_user(request)
+    today_time = timezone.datetime.now(timezone.utc)
     today_date = timezone.datetime.now(timezone.utc).date()
 
     today_goal_exist = Goal.objects.filter(user=user, date=today_date).exists()
@@ -117,20 +119,21 @@ def index(request):
     if today_goal_exist:
         context["goal_today"] = Goal.objects.get(user=user, date=today_date).get_goal()
     else:
-        past_steps, past_goals = get_past_steps_and_goals(user, today_date)
-
-        if len(past_steps) > 0 and len(past_goals) > 0:
-            goals_for_next_week = calc_goal(convert_to_k(past_steps), convert_to_k(past_goals))
-            goal_today = save_goals_for_next_week(user, convert_from_k(goals_for_next_week), today_date)
+        if is_new_user(user, today_date, days=7):
+            goal_today = save_goals_for_today(user, DEFAULT_GOAL, today_date)
         else:
-            goal_today = "[Error] Insufficient Data"
-
+            past_steps, past_goals = get_past_steps_and_goals(user, today_date)
+            if len(past_steps) > 0 and len(past_goals) > 0:
+                goals_for_next_week = calc_goal(convert_to_k(past_steps), convert_to_k(past_goals))
+                goal_today = save_goals_for_next_week(user, convert_from_k(goals_for_next_week), today_date)
+            else:
+                goal_today = "[Error] Insufficient Data"
         context["goal_today"] = goal_today
 
     # Check if need to update "goal decrease for two weeks" messages
     today_goal_decrease_message_exist = Message.objects.filter(user=user, date=today_date,
                                                                type=MessageType.INTERACTIVE).exists()
-    if goal_decrease_for_two_consecutive_weeks(user, today_date) and not today_goal_decrease_message_exist:
+    if goal_decrease_for_two_consecutive_weeks(user, today_date) and not today_goal_decrease_message_exist and not is_new_user(user, today_date, days=14):
         for i in range(7):
             future_date = today_date - timezone.timedelta(days=i)
             goal_decrease_message_template = GOAL_DECREASE_MESSAGE_TEMPLATES[i]
@@ -153,6 +156,9 @@ def index(request):
                 message.responded = True
                 message.save()
 
+    if is_new_user(user, today_date, days=1):
+        create_welcome_message(user, today_time)
+
     return render(request, 'index.html', context)
 
 
@@ -172,9 +178,19 @@ def history(request):
     return render(request, 'history.html', context)
 
 
-@login_required(login_url='/calfit/welcome/')
-def profile(request):
-    # TODO
-    pass
+@csrf_exempt
+def api_check_user(request):
+    if request.method == 'POST':
+        try:
+            payload = json.loads(request.body)
+            username = payload['username']
+            password = payload['password']
+            is_valid = True if auth.authenticate(username=username, password=password) else False
+            response = json.dumps([ { 'Valid': is_valid } ])
+        except Exception as e:
+            response = json.dumps([ { 'Error': str(e) } ])
+        return HttpResponse(response, content_type='text/json')
+    response = json.dumps([ { 'Error': 'Request need to be POST, received {}'.format(request.method) } ])
+    return HttpResponse(response, content_type='text/json')
 
 

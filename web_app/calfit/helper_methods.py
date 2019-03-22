@@ -57,7 +57,8 @@ def goal_decrease_for_two_consecutive_weeks(user, today_date):
 
 def get_past_steps_and_goals(user, today_date):
     """
-    :param user: Current Logged In User\
+    :param user: Current Logged In User
+    :param today_date: [date] Today's date
     :return: Past dates' steps and goals (in seperate lists) -> skip invalid (incomplete) data dates
     """
     past_steps = []
@@ -82,6 +83,7 @@ def get_past_steps_and_goals(user, today_date):
 def get_last_week_records(user, today_date):
     """
     :param user: Current Logged In User
+    :param today_date: [date] Today's date
     :return: [HistoryRecord0, HistoryRecord1, ...]
     """
     last_week_records = []
@@ -104,6 +106,7 @@ def get_last_week_records(user, today_date):
 
 def convert_to_k(data):
     """
+    Translate a list of number in regular numerical unit to unit of k's
     :param data: [num0, num1, ...] A list of data to be converted to K count-unit
     :return: Transitioned list of data . [1000, 1100] -> [1.0, 1.1]
     """
@@ -112,10 +115,22 @@ def convert_to_k(data):
 
 def convert_from_k(data):
     """
+    Translate a list of number in unit of k's to regular numerical unit
     :param data: [num0, num1, ...] A list of data to be converted from K count-unit
     :return: Transitioned list of data. [1.0, 1.1] -> [1000, 1100]
     """
     return list(map(lambda x: int(x * 1000), data))
+
+
+def is_new_user(user, today_date, days=1):
+    """
+    :param user: Current User
+    :param today_date: Today's date
+    :param days: Number of days recognized as a new days, it may vary for different purposes
+    :return: [bool] If the user is created <= n day(s)
+    """
+    time_created = today_date - user.date_joined.date()
+    return time_created.days < days
 
 
 def save_goals_for_next_week(user, goals_for_next_week, today_date):
@@ -132,9 +147,27 @@ def save_goals_for_next_week(user, goals_for_next_week, today_date):
         new_goal.save()
     return goals_for_next_week[0]
 
-def is_new_user(user, today_date):
-    time_since_registerd = timezone.datetime.now(timezone.utc) - user.date_joined
-    return time_since_registerd.days <= 7
+
+def save_goals_for_today(user, goal_for_today, today_date):
+    """
+    :param user: Current Logged In User
+    :param today_date: Today's Date
+    :param goal_for_today: [int] Goal for today
+    :return: The goal for today
+    """
+    today_date = today_date + timezone.timedelta(days=0) # Convert from date to datetime format
+    new_goal = Goal(user=user, date=today_date, goal=goal_for_today)
+    new_goal.save()
+    return new_goal
+
+
+def create_welcome_message(user, today_time):
+    Message.objects.create(user=user, date=today_time, type=MessageType.PLAINTEXT,
+                           message_title="Welcome to CalFit",
+                           message_content="Hi {}! Welcome to CalFit!".format(user.username),
+                           message_respond_yes="",
+                           message_respond_no="")
+    return None
 
 
 class HistoryRecord:
@@ -202,3 +235,6 @@ STEP_DATA_UPLOAD_3_DAY_REMINDER = "We have not had your activity data for 3 days
 # TODO -- Email List
 RESEARCHERS_EMAIL_LIST = ["calfit.system@gmail.com"]
 # RESEARCHERS_EMAIL_LIST = ["Yoshimi.Fukuoka@ucsf.edu"]
+
+# Default Goal For New User
+DEFAULT_GOAL = 5000

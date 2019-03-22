@@ -9,6 +9,6 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('history/', views.history, name='history'),
-    path('profile/', views.profile, name='profile'),
+    path('api/check_user/', views.api_check_user, name='api_check_user'),
     # path('api/get_user_notifications/', views.get_user_notifications, name='get user notifications')
 ]
