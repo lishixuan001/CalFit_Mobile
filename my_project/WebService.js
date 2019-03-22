@@ -6,9 +6,12 @@ import {
     NetInfo,
     Dimensions,
     StyleSheet,
-    Linking
+    Linking,
+    WebView
 } from 'react-native';
-import BackgroundTask from 'react-native-background-task'
+// import BackgroundTask from 'react-native-background-task'
+import CustomTabs from "react-native-custom-tabs";
+import { Constants, WebBrowser } from 'expo';
 const { height, width } = Dimensions.get('window');
 
 
@@ -40,7 +43,11 @@ class WebService extends Component {
                 <NoInternetDisplay />
             )
         }
-        return Linking.openURL('https://google.com')
+
+        // CustomTabs.openURL('https://www.google.com');
+        WebBrowser.openBrowserAsync('https://google.com');
+
+        return null
     }
 }
 
@@ -48,10 +55,10 @@ export default WebService;
 
 
 
-BackgroundTask.define( () => {
-    Linking.openURL('https://google.com');
-    BackgroundTask.finish()
-});
+// BackgroundTask.define( () => {
+//     Linking.openURL('https://google.com');
+//     BackgroundTask.finish()
+// });
 
 
 function NoInternetDisplay() {

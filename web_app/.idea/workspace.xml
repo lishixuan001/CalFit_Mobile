@@ -2,23 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f73e2727-cb86-46bb-9418-0e0281718b04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../my_project/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../my_project/WebService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/.watchmanconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/OfflineNotice.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/assets/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/assets/splash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react_app/package.json" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_ios.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_ios/AppDelegate.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_ios/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_ios/Assets.xcassets/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_ios/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_ios/Base.lproj/Main.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_ios/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_ios/ViewController.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_iosTests/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_iosTests/calfit_iosTests.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_iosUITests/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../calfit_ios/calfit_iosUITests/calfit_iosUITests.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my_project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../my_project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my_project/WebService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../my_project/WebService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calfit/helper_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/calfit/helper_methods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calfit/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/calfit/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calfit/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/calfit/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calfit/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/calfit/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,7 +76,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/calfit/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1133">
+            <state relative-caret-position="3473">
               <caret line="189" column="30" lean-forward="true" selection-start-line="189" selection-start-column="30" selection-end-line="189" selection-end-column="30" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -257,9 +255,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="3360" y="0" width="1080" height="1920" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18882467" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18882467" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -273,7 +270,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.18375136" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.18375136" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -368,7 +365,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/calfit/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1133">
+        <state relative-caret-position="3473">
           <caret line="189" column="30" lean-forward="true" selection-start-line="189" selection-start-column="30" selection-end-line="189" selection-end-column="30" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />

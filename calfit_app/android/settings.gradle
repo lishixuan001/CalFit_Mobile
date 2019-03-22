@@ -1,0 +1,3 @@
+rootProject.name = 'calfit_app'
+
+include ':app'
