@@ -7,64 +7,68 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C110FDDC22453EF900A730AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C110FDDB22453EF900A730AE /* AppDelegate.swift */; };
-		C110FDDE22453EF900A730AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C110FDDD22453EF900A730AE /* ViewController.swift */; };
-		C110FDE122453EF900A730AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C110FDDF22453EF900A730AE /* Main.storyboard */; };
-		C110FDE322453EFA00A730AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C110FDE222453EFA00A730AE /* Assets.xcassets */; };
-		C110FDE622453EFA00A730AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C110FDE422453EFA00A730AE /* LaunchScreen.storyboard */; };
-		C110FDF122453EFA00A730AE /* calfit_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C110FDF022453EFA00A730AE /* calfit_iosTests.swift */; };
-		C110FDFC22453EFA00A730AE /* calfit_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C110FDFB22453EFA00A730AE /* calfit_iosUITests.swift */; };
+		C1339DE022554F5D00658D21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339DDF22554F5D00658D21 /* AppDelegate.m */; };
+		C1339DE322554F5D00658D21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339DE222554F5D00658D21 /* ViewController.m */; };
+		C1339DE622554F5D00658D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1339DE422554F5D00658D21 /* Main.storyboard */; };
+		C1339DE822554F6100658D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1339DE722554F6100658D21 /* Assets.xcassets */; };
+		C1339DEB22554F6100658D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1339DE922554F6100658D21 /* LaunchScreen.storyboard */; };
+		C1339DEE22554F6100658D21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339DED22554F6100658D21 /* main.m */; };
+		C1339DF822554F6100658D21 /* Calfit_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339DF722554F6100658D21 /* Calfit_iOSTests.m */; };
+		C1339E0322554F6100658D21 /* Calfit_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339E0222554F6100658D21 /* Calfit_iOSUITests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C110FDED22453EFA00A730AE /* PBXContainerItemProxy */ = {
+		C1339DF422554F6100658D21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C110FDD022453EF900A730AE /* Project object */;
+			containerPortal = C1339DD322554F5D00658D21 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C110FDD722453EF900A730AE;
-			remoteInfo = calfit_ios;
+			remoteGlobalIDString = C1339DDA22554F5D00658D21;
+			remoteInfo = Calfit_iOS;
 		};
-		C110FDF822453EFA00A730AE /* PBXContainerItemProxy */ = {
+		C1339DFF22554F6100658D21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C110FDD022453EF900A730AE /* Project object */;
+			containerPortal = C1339DD322554F5D00658D21 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C110FDD722453EF900A730AE;
-			remoteInfo = calfit_ios;
+			remoteGlobalIDString = C1339DDA22554F5D00658D21;
+			remoteInfo = Calfit_iOS;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C110FDD822453EF900A730AE /* calfit_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calfit_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C110FDDB22453EF900A730AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C110FDDD22453EF900A730AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C110FDE022453EF900A730AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C110FDE222453EFA00A730AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C110FDE522453EFA00A730AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C110FDE722453EFA00A730AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C110FDEC22453EFA00A730AE /* calfit_iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calfit_iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C110FDF022453EFA00A730AE /* calfit_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calfit_iosTests.swift; sourceTree = "<group>"; };
-		C110FDF222453EFA00A730AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C110FDF722453EFA00A730AE /* calfit_iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calfit_iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C110FDFB22453EFA00A730AE /* calfit_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calfit_iosUITests.swift; sourceTree = "<group>"; };
-		C110FDFD22453EFA00A730AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1339DDB22554F5D00658D21 /* Calfit_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calfit_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1339DDE22554F5D00658D21 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C1339DDF22554F5D00658D21 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C1339DE122554F5D00658D21 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C1339DE222554F5D00658D21 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C1339DE522554F5D00658D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1339DE722554F6100658D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1339DEA22554F6100658D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C1339DEC22554F6100658D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1339DED22554F6100658D21 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C1339DF322554F6100658D21 /* Calfit_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calfit_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1339DF722554F6100658D21 /* Calfit_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calfit_iOSTests.m; sourceTree = "<group>"; };
+		C1339DF922554F6100658D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1339DFE22554F6100658D21 /* Calfit_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calfit_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1339E0222554F6100658D21 /* Calfit_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calfit_iOSUITests.m; sourceTree = "<group>"; };
+		C1339E0422554F6100658D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C110FDD522453EF900A730AE /* Frameworks */ = {
+		C1339DD822554F5D00658D21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C110FDE922453EFA00A730AE /* Frameworks */ = {
+		C1339DF022554F6100658D21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C110FDF422453EFA00A730AE /* Frameworks */ = {
+		C1339DFB22554F6100658D21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -74,137 +78,139 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C110FDCF22453EF900A730AE = {
+		C1339DD222554F5D00658D21 = {
 			isa = PBXGroup;
 			children = (
-				C110FDDA22453EF900A730AE /* calfit_ios */,
-				C110FDEF22453EFA00A730AE /* calfit_iosTests */,
-				C110FDFA22453EFA00A730AE /* calfit_iosUITests */,
-				C110FDD922453EF900A730AE /* Products */,
+				C1339DDD22554F5D00658D21 /* Calfit_iOS */,
+				C1339DF622554F6100658D21 /* Calfit_iOSTests */,
+				C1339E0122554F6100658D21 /* Calfit_iOSUITests */,
+				C1339DDC22554F5D00658D21 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C110FDD922453EF900A730AE /* Products */ = {
+		C1339DDC22554F5D00658D21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C110FDD822453EF900A730AE /* calfit_ios.app */,
-				C110FDEC22453EFA00A730AE /* calfit_iosTests.xctest */,
-				C110FDF722453EFA00A730AE /* calfit_iosUITests.xctest */,
+				C1339DDB22554F5D00658D21 /* Calfit_iOS.app */,
+				C1339DF322554F6100658D21 /* Calfit_iOSTests.xctest */,
+				C1339DFE22554F6100658D21 /* Calfit_iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C110FDDA22453EF900A730AE /* calfit_ios */ = {
+		C1339DDD22554F5D00658D21 /* Calfit_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C110FDDB22453EF900A730AE /* AppDelegate.swift */,
-				C110FDDD22453EF900A730AE /* ViewController.swift */,
-				C110FDDF22453EF900A730AE /* Main.storyboard */,
-				C110FDE222453EFA00A730AE /* Assets.xcassets */,
-				C110FDE422453EFA00A730AE /* LaunchScreen.storyboard */,
-				C110FDE722453EFA00A730AE /* Info.plist */,
+				C1339DDE22554F5D00658D21 /* AppDelegate.h */,
+				C1339DDF22554F5D00658D21 /* AppDelegate.m */,
+				C1339DE122554F5D00658D21 /* ViewController.h */,
+				C1339DE222554F5D00658D21 /* ViewController.m */,
+				C1339DE422554F5D00658D21 /* Main.storyboard */,
+				C1339DE722554F6100658D21 /* Assets.xcassets */,
+				C1339DE922554F6100658D21 /* LaunchScreen.storyboard */,
+				C1339DEC22554F6100658D21 /* Info.plist */,
+				C1339DED22554F6100658D21 /* main.m */,
 			);
-			path = calfit_ios;
+			path = Calfit_iOS;
 			sourceTree = "<group>";
 		};
-		C110FDEF22453EFA00A730AE /* calfit_iosTests */ = {
+		C1339DF622554F6100658D21 /* Calfit_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				C110FDF022453EFA00A730AE /* calfit_iosTests.swift */,
-				C110FDF222453EFA00A730AE /* Info.plist */,
+				C1339DF722554F6100658D21 /* Calfit_iOSTests.m */,
+				C1339DF922554F6100658D21 /* Info.plist */,
 			);
-			path = calfit_iosTests;
+			path = Calfit_iOSTests;
 			sourceTree = "<group>";
 		};
-		C110FDFA22453EFA00A730AE /* calfit_iosUITests */ = {
+		C1339E0122554F6100658D21 /* Calfit_iOSUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C110FDFB22453EFA00A730AE /* calfit_iosUITests.swift */,
-				C110FDFD22453EFA00A730AE /* Info.plist */,
+				C1339E0222554F6100658D21 /* Calfit_iOSUITests.m */,
+				C1339E0422554F6100658D21 /* Info.plist */,
 			);
-			path = calfit_iosUITests;
+			path = Calfit_iOSUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C110FDD722453EF900A730AE /* calfit_ios */ = {
+		C1339DDA22554F5D00658D21 /* Calfit_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C110FE0022453EFA00A730AE /* Build configuration list for PBXNativeTarget "calfit_ios" */;
+			buildConfigurationList = C1339E0722554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOS" */;
 			buildPhases = (
-				C110FDD422453EF900A730AE /* Sources */,
-				C110FDD522453EF900A730AE /* Frameworks */,
-				C110FDD622453EF900A730AE /* Resources */,
+				C1339DD722554F5D00658D21 /* Sources */,
+				C1339DD822554F5D00658D21 /* Frameworks */,
+				C1339DD922554F5D00658D21 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = calfit_ios;
-			productName = calfit_ios;
-			productReference = C110FDD822453EF900A730AE /* calfit_ios.app */;
+			name = Calfit_iOS;
+			productName = Calfit_iOS;
+			productReference = C1339DDB22554F5D00658D21 /* Calfit_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C110FDEB22453EFA00A730AE /* calfit_iosTests */ = {
+		C1339DF222554F6100658D21 /* Calfit_iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C110FE0322453EFA00A730AE /* Build configuration list for PBXNativeTarget "calfit_iosTests" */;
+			buildConfigurationList = C1339E0A22554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOSTests" */;
 			buildPhases = (
-				C110FDE822453EFA00A730AE /* Sources */,
-				C110FDE922453EFA00A730AE /* Frameworks */,
-				C110FDEA22453EFA00A730AE /* Resources */,
+				C1339DEF22554F6100658D21 /* Sources */,
+				C1339DF022554F6100658D21 /* Frameworks */,
+				C1339DF122554F6100658D21 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C110FDEE22453EFA00A730AE /* PBXTargetDependency */,
+				C1339DF522554F6100658D21 /* PBXTargetDependency */,
 			);
-			name = calfit_iosTests;
-			productName = calfit_iosTests;
-			productReference = C110FDEC22453EFA00A730AE /* calfit_iosTests.xctest */;
+			name = Calfit_iOSTests;
+			productName = Calfit_iOSTests;
+			productReference = C1339DF322554F6100658D21 /* Calfit_iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C110FDF622453EFA00A730AE /* calfit_iosUITests */ = {
+		C1339DFD22554F6100658D21 /* Calfit_iOSUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C110FE0622453EFA00A730AE /* Build configuration list for PBXNativeTarget "calfit_iosUITests" */;
+			buildConfigurationList = C1339E0D22554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOSUITests" */;
 			buildPhases = (
-				C110FDF322453EFA00A730AE /* Sources */,
-				C110FDF422453EFA00A730AE /* Frameworks */,
-				C110FDF522453EFA00A730AE /* Resources */,
+				C1339DFA22554F6100658D21 /* Sources */,
+				C1339DFB22554F6100658D21 /* Frameworks */,
+				C1339DFC22554F6100658D21 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C110FDF922453EFA00A730AE /* PBXTargetDependency */,
+				C1339E0022554F6100658D21 /* PBXTargetDependency */,
 			);
-			name = calfit_iosUITests;
-			productName = calfit_iosUITests;
-			productReference = C110FDF722453EFA00A730AE /* calfit_iosUITests.xctest */;
+			name = Calfit_iOSUITests;
+			productName = Calfit_iOSUITests;
+			productReference = C1339DFE22554F6100658D21 /* Calfit_iOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C110FDD022453EF900A730AE /* Project object */ = {
+		C1339DD322554F5D00658D21 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Shixuan Li";
 				TargetAttributes = {
-					C110FDD722453EF900A730AE = {
+					C1339DDA22554F5D00658D21 = {
 						CreatedOnToolsVersion = 10.1;
 					};
-					C110FDEB22453EFA00A730AE = {
+					C1339DF222554F6100658D21 = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = C110FDD722453EF900A730AE;
+						TestTargetID = C1339DDA22554F5D00658D21;
 					};
-					C110FDF622453EFA00A730AE = {
+					C1339DFD22554F6100658D21 = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = C110FDD722453EF900A730AE;
+						TestTargetID = C1339DDA22554F5D00658D21;
 					};
 				};
 			};
-			buildConfigurationList = C110FDD322453EF900A730AE /* Build configuration list for PBXProject "calfit_ios" */;
+			buildConfigurationList = C1339DD622554F5D00658D21 /* Build configuration list for PBXProject "Calfit_iOS" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -212,37 +218,37 @@
 				en,
 				Base,
 			);
-			mainGroup = C110FDCF22453EF900A730AE;
-			productRefGroup = C110FDD922453EF900A730AE /* Products */;
+			mainGroup = C1339DD222554F5D00658D21;
+			productRefGroup = C1339DDC22554F5D00658D21 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C110FDD722453EF900A730AE /* calfit_ios */,
-				C110FDEB22453EFA00A730AE /* calfit_iosTests */,
-				C110FDF622453EFA00A730AE /* calfit_iosUITests */,
+				C1339DDA22554F5D00658D21 /* Calfit_iOS */,
+				C1339DF222554F6100658D21 /* Calfit_iOSTests */,
+				C1339DFD22554F6100658D21 /* Calfit_iOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C110FDD622453EF900A730AE /* Resources */ = {
+		C1339DD922554F5D00658D21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C110FDE622453EFA00A730AE /* LaunchScreen.storyboard in Resources */,
-				C110FDE322453EFA00A730AE /* Assets.xcassets in Resources */,
-				C110FDE122453EF900A730AE /* Main.storyboard in Resources */,
+				C1339DEB22554F6100658D21 /* LaunchScreen.storyboard in Resources */,
+				C1339DE822554F6100658D21 /* Assets.xcassets in Resources */,
+				C1339DE622554F5D00658D21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C110FDEA22453EFA00A730AE /* Resources */ = {
+		C1339DF122554F6100658D21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C110FDF522453EFA00A730AE /* Resources */ = {
+		C1339DFC22554F6100658D21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,59 +258,60 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C110FDD422453EF900A730AE /* Sources */ = {
+		C1339DD722554F5D00658D21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C110FDDE22453EF900A730AE /* ViewController.swift in Sources */,
-				C110FDDC22453EF900A730AE /* AppDelegate.swift in Sources */,
+				C1339DE322554F5D00658D21 /* ViewController.m in Sources */,
+				C1339DEE22554F6100658D21 /* main.m in Sources */,
+				C1339DE022554F5D00658D21 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C110FDE822453EFA00A730AE /* Sources */ = {
+		C1339DEF22554F6100658D21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C110FDF122453EFA00A730AE /* calfit_iosTests.swift in Sources */,
+				C1339DF822554F6100658D21 /* Calfit_iOSTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C110FDF322453EFA00A730AE /* Sources */ = {
+		C1339DFA22554F6100658D21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C110FDFC22453EFA00A730AE /* calfit_iosUITests.swift in Sources */,
+				C1339E0322554F6100658D21 /* Calfit_iOSUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C110FDEE22453EFA00A730AE /* PBXTargetDependency */ = {
+		C1339DF522554F6100658D21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C110FDD722453EF900A730AE /* calfit_ios */;
-			targetProxy = C110FDED22453EFA00A730AE /* PBXContainerItemProxy */;
+			target = C1339DDA22554F5D00658D21 /* Calfit_iOS */;
+			targetProxy = C1339DF422554F6100658D21 /* PBXContainerItemProxy */;
 		};
-		C110FDF922453EFA00A730AE /* PBXTargetDependency */ = {
+		C1339E0022554F6100658D21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C110FDD722453EF900A730AE /* calfit_ios */;
-			targetProxy = C110FDF822453EFA00A730AE /* PBXContainerItemProxy */;
+			target = C1339DDA22554F5D00658D21 /* Calfit_iOS */;
+			targetProxy = C1339DFF22554F6100658D21 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C110FDDF22453EF900A730AE /* Main.storyboard */ = {
+		C1339DE422554F5D00658D21 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C110FDE022453EF900A730AE /* Base */,
+				C1339DE522554F5D00658D21 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		C110FDE422453EFA00A730AE /* LaunchScreen.storyboard */ = {
+		C1339DE922554F6100658D21 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C110FDE522453EFA00A730AE /* Base */,
+				C1339DEA22554F6100658D21 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -312,7 +319,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C110FDFE22453EFA00A730AE /* Debug */ = {
+		C1339E0522554F6100658D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -368,12 +375,10 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		C110FDFF22453EFA00A730AE /* Release */ = {
+		C1339E0622554F6100658D21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -422,164 +427,152 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		C110FE0122453EFA00A730AE /* Debug */ = {
+		C1339E0822554F6100658D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = calfit_ios/Info.plist;
+				INFOPLIST_FILE = Calfit_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.calfit-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		C110FE0222453EFA00A730AE /* Release */ = {
+		C1339E0922554F6100658D21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = calfit_ios/Info.plist;
+				INFOPLIST_FILE = Calfit_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.calfit-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		C110FE0422453EFA00A730AE /* Debug */ = {
+		C1339E0B22554F6100658D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = calfit_iosTests/Info.plist;
+				INFOPLIST_FILE = Calfit_iOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.calfit-iosTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/calfit_ios.app/calfit_ios";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calfit_iOS.app/Calfit_iOS";
 			};
 			name = Debug;
 		};
-		C110FE0522453EFA00A730AE /* Release */ = {
+		C1339E0C22554F6100658D21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = calfit_iosTests/Info.plist;
+				INFOPLIST_FILE = Calfit_iOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.calfit-iosTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/calfit_ios.app/calfit_ios";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calfit_iOS.app/Calfit_iOS";
 			};
 			name = Release;
 		};
-		C110FE0722453EFA00A730AE /* Debug */ = {
+		C1339E0E22554F6100658D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = calfit_iosUITests/Info.plist;
+				INFOPLIST_FILE = Calfit_iOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.calfit-iosUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-iOSUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = calfit_ios;
+				TEST_TARGET_NAME = Calfit_iOS;
 			};
 			name = Debug;
 		};
-		C110FE0822453EFA00A730AE /* Release */ = {
+		C1339E0F22554F6100658D21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = calfit_iosUITests/Info.plist;
+				INFOPLIST_FILE = Calfit_iOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.calfit-iosUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-iOSUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = calfit_ios;
+				TEST_TARGET_NAME = Calfit_iOS;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C110FDD322453EF900A730AE /* Build configuration list for PBXProject "calfit_ios" */ = {
+		C1339DD622554F5D00658D21 /* Build configuration list for PBXProject "Calfit_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C110FDFE22453EFA00A730AE /* Debug */,
-				C110FDFF22453EFA00A730AE /* Release */,
+				C1339E0522554F6100658D21 /* Debug */,
+				C1339E0622554F6100658D21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C110FE0022453EFA00A730AE /* Build configuration list for PBXNativeTarget "calfit_ios" */ = {
+		C1339E0722554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C110FE0122453EFA00A730AE /* Debug */,
-				C110FE0222453EFA00A730AE /* Release */,
+				C1339E0822554F6100658D21 /* Debug */,
+				C1339E0922554F6100658D21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C110FE0322453EFA00A730AE /* Build configuration list for PBXNativeTarget "calfit_iosTests" */ = {
+		C1339E0A22554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C110FE0422453EFA00A730AE /* Debug */,
-				C110FE0522453EFA00A730AE /* Release */,
+				C1339E0B22554F6100658D21 /* Debug */,
+				C1339E0C22554F6100658D21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C110FE0622453EFA00A730AE /* Build configuration list for PBXNativeTarget "calfit_iosUITests" */ = {
+		C1339E0D22554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOSUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C110FE0722453EFA00A730AE /* Debug */,
-				C110FE0822453EFA00A730AE /* Release */,
+				C1339E0E22554F6100658D21 /* Debug */,
+				C1339E0F22554F6100658D21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C110FDD022453EF900A730AE /* Project object */;
+	rootObject = C1339DD322554F5D00658D21 /* Project object */;
 }
