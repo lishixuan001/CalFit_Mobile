@@ -7,68 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1339DE022554F5D00658D21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339DDF22554F5D00658D21 /* AppDelegate.m */; };
-		C1339DE322554F5D00658D21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339DE222554F5D00658D21 /* ViewController.m */; };
-		C1339DE622554F5D00658D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1339DE422554F5D00658D21 /* Main.storyboard */; };
-		C1339DE822554F6100658D21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1339DE722554F6100658D21 /* Assets.xcassets */; };
-		C1339DEB22554F6100658D21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1339DE922554F6100658D21 /* LaunchScreen.storyboard */; };
-		C1339DEE22554F6100658D21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339DED22554F6100658D21 /* main.m */; };
-		C1339DF822554F6100658D21 /* Calfit_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339DF722554F6100658D21 /* Calfit_iOSTests.m */; };
-		C1339E0322554F6100658D21 /* Calfit_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1339E0222554F6100658D21 /* Calfit_iOSUITests.m */; };
+		C16527D52255EC1D00D9D39F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527D42255EC1D00D9D39F /* AppDelegate.m */; };
+		C16527D82255EC1D00D9D39F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527D72255EC1D00D9D39F /* ViewController.m */; };
+		C16527DB2255EC1D00D9D39F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16527D92255EC1D00D9D39F /* Main.storyboard */; };
+		C16527DD2255EC1E00D9D39F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C16527DC2255EC1E00D9D39F /* Assets.xcassets */; };
+		C16527E02255EC1E00D9D39F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16527DE2255EC1E00D9D39F /* LaunchScreen.storyboard */; };
+		C16527E32255EC1E00D9D39F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527E22255EC1E00D9D39F /* main.m */; };
+		C16527ED2255EC1E00D9D39F /* Calfit_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527EC2255EC1E00D9D39F /* Calfit_iOSTests.m */; };
+		C16527F82255EC1E00D9D39F /* Calfit_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527F72255EC1E00D9D39F /* Calfit_iOSUITests.m */; };
+		C165280A2255F17200D9D39F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16528092255F17200D9D39F /* SystemConfiguration.framework */; };
+		C16528102256064700D9D39F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C165280F2256064700D9D39F /* logo.png */; };
+		C16528142256067900D9D39F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C16528122256067900D9D39F /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C1339DF422554F6100658D21 /* PBXContainerItemProxy */ = {
+		C16527E92255EC1E00D9D39F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C1339DD322554F5D00658D21 /* Project object */;
+			containerPortal = C16527C82255EC1D00D9D39F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C1339DDA22554F5D00658D21;
+			remoteGlobalIDString = C16527CF2255EC1D00D9D39F;
 			remoteInfo = Calfit_iOS;
 		};
-		C1339DFF22554F6100658D21 /* PBXContainerItemProxy */ = {
+		C16527F42255EC1E00D9D39F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C1339DD322554F5D00658D21 /* Project object */;
+			containerPortal = C16527C82255EC1D00D9D39F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C1339DDA22554F5D00658D21;
+			remoteGlobalIDString = C16527CF2255EC1D00D9D39F;
 			remoteInfo = Calfit_iOS;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C1339DDB22554F5D00658D21 /* Calfit_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calfit_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1339DDE22554F5D00658D21 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C1339DDF22554F5D00658D21 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C1339DE122554F5D00658D21 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C1339DE222554F5D00658D21 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C1339DE522554F5D00658D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C1339DE722554F6100658D21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C1339DEA22554F6100658D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C1339DEC22554F6100658D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1339DED22554F6100658D21 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C1339DF322554F6100658D21 /* Calfit_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calfit_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1339DF722554F6100658D21 /* Calfit_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calfit_iOSTests.m; sourceTree = "<group>"; };
-		C1339DF922554F6100658D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1339DFE22554F6100658D21 /* Calfit_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calfit_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C1339E0222554F6100658D21 /* Calfit_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calfit_iOSUITests.m; sourceTree = "<group>"; };
-		C1339E0422554F6100658D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C16527D02255EC1D00D9D39F /* Calfit_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calfit_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C16527D32255EC1D00D9D39F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C16527D42255EC1D00D9D39F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C16527D62255EC1D00D9D39F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C16527D72255EC1D00D9D39F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C16527DA2255EC1D00D9D39F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C16527DC2255EC1E00D9D39F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C16527DF2255EC1E00D9D39F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C16527E12255EC1E00D9D39F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C16527E22255EC1E00D9D39F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C16527E82255EC1E00D9D39F /* Calfit_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calfit_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C16527EC2255EC1E00D9D39F /* Calfit_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calfit_iOSTests.m; sourceTree = "<group>"; };
+		C16527EE2255EC1E00D9D39F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C16527F32255EC1E00D9D39F /* Calfit_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calfit_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C16527F72255EC1E00D9D39F /* Calfit_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calfit_iOSUITests.m; sourceTree = "<group>"; };
+		C16527F92255EC1E00D9D39F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C16528092255F17200D9D39F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C165280F2256064700D9D39F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../../../Downloads/logo.png; sourceTree = "<group>"; };
+		C16528122256067900D9D39F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		C16528132256067900D9D39F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C1339DD822554F5D00658D21 /* Frameworks */ = {
+		C16527CD2255EC1D00D9D39F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C165280A2255F17200D9D39F /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C16527E52255EC1E00D9D39F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1339DF022554F6100658D21 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C1339DFB22554F6100658D21 /* Frameworks */ = {
+		C16527F02255EC1E00D9D39F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,70 +86,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C1339DD222554F5D00658D21 = {
+		C16527C72255EC1D00D9D39F = {
 			isa = PBXGroup;
 			children = (
-				C1339DDD22554F5D00658D21 /* Calfit_iOS */,
-				C1339DF622554F6100658D21 /* Calfit_iOSTests */,
-				C1339E0122554F6100658D21 /* Calfit_iOSUITests */,
-				C1339DDC22554F5D00658D21 /* Products */,
+				C16527D22255EC1D00D9D39F /* Calfit_iOS */,
+				C16527EB2255EC1E00D9D39F /* Calfit_iOSTests */,
+				C16527F62255EC1E00D9D39F /* Calfit_iOSUITests */,
+				C16527D12255EC1D00D9D39F /* Products */,
+				C16528082255F17200D9D39F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		C1339DDC22554F5D00658D21 /* Products */ = {
+		C16527D12255EC1D00D9D39F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C1339DDB22554F5D00658D21 /* Calfit_iOS.app */,
-				C1339DF322554F6100658D21 /* Calfit_iOSTests.xctest */,
-				C1339DFE22554F6100658D21 /* Calfit_iOSUITests.xctest */,
+				C16527D02255EC1D00D9D39F /* Calfit_iOS.app */,
+				C16527E82255EC1E00D9D39F /* Calfit_iOSTests.xctest */,
+				C16527F32255EC1E00D9D39F /* Calfit_iOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C1339DDD22554F5D00658D21 /* Calfit_iOS */ = {
+		C16527D22255EC1D00D9D39F /* Calfit_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C1339DDE22554F5D00658D21 /* AppDelegate.h */,
-				C1339DDF22554F5D00658D21 /* AppDelegate.m */,
-				C1339DE122554F5D00658D21 /* ViewController.h */,
-				C1339DE222554F5D00658D21 /* ViewController.m */,
-				C1339DE422554F5D00658D21 /* Main.storyboard */,
-				C1339DE722554F6100658D21 /* Assets.xcassets */,
-				C1339DE922554F6100658D21 /* LaunchScreen.storyboard */,
-				C1339DEC22554F6100658D21 /* Info.plist */,
-				C1339DED22554F6100658D21 /* main.m */,
+				C165280F2256064700D9D39F /* logo.png */,
+				C16527D32255EC1D00D9D39F /* AppDelegate.h */,
+				C16527D42255EC1D00D9D39F /* AppDelegate.m */,
+				C16527D62255EC1D00D9D39F /* ViewController.h */,
+				C16527D72255EC1D00D9D39F /* ViewController.m */,
+				C16528132256067900D9D39F /* Reachability.h */,
+				C16528122256067900D9D39F /* Reachability.m */,
+				C16527D92255EC1D00D9D39F /* Main.storyboard */,
+				C16527DC2255EC1E00D9D39F /* Assets.xcassets */,
+				C16527DE2255EC1E00D9D39F /* LaunchScreen.storyboard */,
+				C16527E12255EC1E00D9D39F /* Info.plist */,
+				C16527E22255EC1E00D9D39F /* main.m */,
 			);
 			path = Calfit_iOS;
 			sourceTree = "<group>";
 		};
-		C1339DF622554F6100658D21 /* Calfit_iOSTests */ = {
+		C16527EB2255EC1E00D9D39F /* Calfit_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				C1339DF722554F6100658D21 /* Calfit_iOSTests.m */,
-				C1339DF922554F6100658D21 /* Info.plist */,
+				C16527EC2255EC1E00D9D39F /* Calfit_iOSTests.m */,
+				C16527EE2255EC1E00D9D39F /* Info.plist */,
 			);
 			path = Calfit_iOSTests;
 			sourceTree = "<group>";
 		};
-		C1339E0122554F6100658D21 /* Calfit_iOSUITests */ = {
+		C16527F62255EC1E00D9D39F /* Calfit_iOSUITests */ = {
 			isa = PBXGroup;
 			children = (
-				C1339E0222554F6100658D21 /* Calfit_iOSUITests.m */,
-				C1339E0422554F6100658D21 /* Info.plist */,
+				C16527F72255EC1E00D9D39F /* Calfit_iOSUITests.m */,
+				C16527F92255EC1E00D9D39F /* Info.plist */,
 			);
 			path = Calfit_iOSUITests;
+			sourceTree = "<group>";
+		};
+		C16528082255F17200D9D39F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C16528092255F17200D9D39F /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C1339DDA22554F5D00658D21 /* Calfit_iOS */ = {
+		C16527CF2255EC1D00D9D39F /* Calfit_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C1339E0722554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOS" */;
+			buildConfigurationList = C16527FC2255EC1E00D9D39F /* Build configuration list for PBXNativeTarget "Calfit_iOS" */;
 			buildPhases = (
-				C1339DD722554F5D00658D21 /* Sources */,
-				C1339DD822554F5D00658D21 /* Frameworks */,
-				C1339DD922554F5D00658D21 /* Resources */,
+				C16527CC2255EC1D00D9D39F /* Sources */,
+				C16527CD2255EC1D00D9D39F /* Frameworks */,
+				C16527CE2255EC1D00D9D39F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -149,68 +169,68 @@
 			);
 			name = Calfit_iOS;
 			productName = Calfit_iOS;
-			productReference = C1339DDB22554F5D00658D21 /* Calfit_iOS.app */;
+			productReference = C16527D02255EC1D00D9D39F /* Calfit_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C1339DF222554F6100658D21 /* Calfit_iOSTests */ = {
+		C16527E72255EC1E00D9D39F /* Calfit_iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C1339E0A22554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOSTests" */;
+			buildConfigurationList = C16527FF2255EC1E00D9D39F /* Build configuration list for PBXNativeTarget "Calfit_iOSTests" */;
 			buildPhases = (
-				C1339DEF22554F6100658D21 /* Sources */,
-				C1339DF022554F6100658D21 /* Frameworks */,
-				C1339DF122554F6100658D21 /* Resources */,
+				C16527E42255EC1E00D9D39F /* Sources */,
+				C16527E52255EC1E00D9D39F /* Frameworks */,
+				C16527E62255EC1E00D9D39F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C1339DF522554F6100658D21 /* PBXTargetDependency */,
+				C16527EA2255EC1E00D9D39F /* PBXTargetDependency */,
 			);
 			name = Calfit_iOSTests;
 			productName = Calfit_iOSTests;
-			productReference = C1339DF322554F6100658D21 /* Calfit_iOSTests.xctest */;
+			productReference = C16527E82255EC1E00D9D39F /* Calfit_iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C1339DFD22554F6100658D21 /* Calfit_iOSUITests */ = {
+		C16527F22255EC1E00D9D39F /* Calfit_iOSUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C1339E0D22554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOSUITests" */;
+			buildConfigurationList = C16528022255EC1E00D9D39F /* Build configuration list for PBXNativeTarget "Calfit_iOSUITests" */;
 			buildPhases = (
-				C1339DFA22554F6100658D21 /* Sources */,
-				C1339DFB22554F6100658D21 /* Frameworks */,
-				C1339DFC22554F6100658D21 /* Resources */,
+				C16527EF2255EC1E00D9D39F /* Sources */,
+				C16527F02255EC1E00D9D39F /* Frameworks */,
+				C16527F12255EC1E00D9D39F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C1339E0022554F6100658D21 /* PBXTargetDependency */,
+				C16527F52255EC1E00D9D39F /* PBXTargetDependency */,
 			);
 			name = Calfit_iOSUITests;
 			productName = Calfit_iOSUITests;
-			productReference = C1339DFE22554F6100658D21 /* Calfit_iOSUITests.xctest */;
+			productReference = C16527F32255EC1E00D9D39F /* Calfit_iOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C1339DD322554F5D00658D21 /* Project object */ = {
+		C16527C82255EC1D00D9D39F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Shixuan Li";
 				TargetAttributes = {
-					C1339DDA22554F5D00658D21 = {
+					C16527CF2255EC1D00D9D39F = {
 						CreatedOnToolsVersion = 10.1;
 					};
-					C1339DF222554F6100658D21 = {
+					C16527E72255EC1E00D9D39F = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = C1339DDA22554F5D00658D21;
+						TestTargetID = C16527CF2255EC1D00D9D39F;
 					};
-					C1339DFD22554F6100658D21 = {
+					C16527F22255EC1E00D9D39F = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = C1339DDA22554F5D00658D21;
+						TestTargetID = C16527CF2255EC1D00D9D39F;
 					};
 				};
 			};
-			buildConfigurationList = C1339DD622554F5D00658D21 /* Build configuration list for PBXProject "Calfit_iOS" */;
+			buildConfigurationList = C16527CB2255EC1D00D9D39F /* Build configuration list for PBXProject "Calfit_iOS" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -218,37 +238,38 @@
 				en,
 				Base,
 			);
-			mainGroup = C1339DD222554F5D00658D21;
-			productRefGroup = C1339DDC22554F5D00658D21 /* Products */;
+			mainGroup = C16527C72255EC1D00D9D39F;
+			productRefGroup = C16527D12255EC1D00D9D39F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C1339DDA22554F5D00658D21 /* Calfit_iOS */,
-				C1339DF222554F6100658D21 /* Calfit_iOSTests */,
-				C1339DFD22554F6100658D21 /* Calfit_iOSUITests */,
+				C16527CF2255EC1D00D9D39F /* Calfit_iOS */,
+				C16527E72255EC1E00D9D39F /* Calfit_iOSTests */,
+				C16527F22255EC1E00D9D39F /* Calfit_iOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C1339DD922554F5D00658D21 /* Resources */ = {
+		C16527CE2255EC1D00D9D39F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1339DEB22554F6100658D21 /* LaunchScreen.storyboard in Resources */,
-				C1339DE822554F6100658D21 /* Assets.xcassets in Resources */,
-				C1339DE622554F5D00658D21 /* Main.storyboard in Resources */,
+				C16528102256064700D9D39F /* logo.png in Resources */,
+				C16527E02255EC1E00D9D39F /* LaunchScreen.storyboard in Resources */,
+				C16527DD2255EC1E00D9D39F /* Assets.xcassets in Resources */,
+				C16527DB2255EC1D00D9D39F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1339DF122554F6100658D21 /* Resources */ = {
+		C16527E62255EC1E00D9D39F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1339DFC22554F6100658D21 /* Resources */ = {
+		C16527F12255EC1E00D9D39F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -258,60 +279,61 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C1339DD722554F5D00658D21 /* Sources */ = {
+		C16527CC2255EC1D00D9D39F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1339DE322554F5D00658D21 /* ViewController.m in Sources */,
-				C1339DEE22554F6100658D21 /* main.m in Sources */,
-				C1339DE022554F5D00658D21 /* AppDelegate.m in Sources */,
+				C16527D82255EC1D00D9D39F /* ViewController.m in Sources */,
+				C16527E32255EC1E00D9D39F /* main.m in Sources */,
+				C16528142256067900D9D39F /* Reachability.m in Sources */,
+				C16527D52255EC1D00D9D39F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1339DEF22554F6100658D21 /* Sources */ = {
+		C16527E42255EC1E00D9D39F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1339DF822554F6100658D21 /* Calfit_iOSTests.m in Sources */,
+				C16527ED2255EC1E00D9D39F /* Calfit_iOSTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1339DFA22554F6100658D21 /* Sources */ = {
+		C16527EF2255EC1E00D9D39F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1339E0322554F6100658D21 /* Calfit_iOSUITests.m in Sources */,
+				C16527F82255EC1E00D9D39F /* Calfit_iOSUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C1339DF522554F6100658D21 /* PBXTargetDependency */ = {
+		C16527EA2255EC1E00D9D39F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C1339DDA22554F5D00658D21 /* Calfit_iOS */;
-			targetProxy = C1339DF422554F6100658D21 /* PBXContainerItemProxy */;
+			target = C16527CF2255EC1D00D9D39F /* Calfit_iOS */;
+			targetProxy = C16527E92255EC1E00D9D39F /* PBXContainerItemProxy */;
 		};
-		C1339E0022554F6100658D21 /* PBXTargetDependency */ = {
+		C16527F52255EC1E00D9D39F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C1339DDA22554F5D00658D21 /* Calfit_iOS */;
-			targetProxy = C1339DFF22554F6100658D21 /* PBXContainerItemProxy */;
+			target = C16527CF2255EC1D00D9D39F /* Calfit_iOS */;
+			targetProxy = C16527F42255EC1E00D9D39F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C1339DE422554F5D00658D21 /* Main.storyboard */ = {
+		C16527D92255EC1D00D9D39F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C1339DE522554F5D00658D21 /* Base */,
+				C16527DA2255EC1D00D9D39F /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		C1339DE922554F6100658D21 /* LaunchScreen.storyboard */ = {
+		C16527DE2255EC1E00D9D39F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C1339DEA22554F6100658D21 /* Base */,
+				C16527DF2255EC1E00D9D39F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -319,7 +341,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C1339E0522554F6100658D21 /* Debug */ = {
+		C16527FA2255EC1E00D9D39F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -378,7 +400,7 @@
 			};
 			name = Debug;
 		};
-		C1339E0622554F6100658D21 /* Release */ = {
+		C16527FB2255EC1E00D9D39F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -431,7 +453,7 @@
 			};
 			name = Release;
 		};
-		C1339E0822554F6100658D21 /* Debug */ = {
+		C16527FD2255EC1E00D9D39F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -447,7 +469,7 @@
 			};
 			name = Debug;
 		};
-		C1339E0922554F6100658D21 /* Release */ = {
+		C16527FE2255EC1E00D9D39F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -463,7 +485,7 @@
 			};
 			name = Release;
 		};
-		C1339E0B22554F6100658D21 /* Debug */ = {
+		C16528002255EC1E00D9D39F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -481,7 +503,7 @@
 			};
 			name = Debug;
 		};
-		C1339E0C22554F6100658D21 /* Release */ = {
+		C16528012255EC1E00D9D39F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -499,7 +521,7 @@
 			};
 			name = Release;
 		};
-		C1339E0E22554F6100658D21 /* Debug */ = {
+		C16528032255EC1E00D9D39F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -516,7 +538,7 @@
 			};
 			name = Debug;
 		};
-		C1339E0F22554F6100658D21 /* Release */ = {
+		C16528042255EC1E00D9D39F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -536,43 +558,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C1339DD622554F5D00658D21 /* Build configuration list for PBXProject "Calfit_iOS" */ = {
+		C16527CB2255EC1D00D9D39F /* Build configuration list for PBXProject "Calfit_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C1339E0522554F6100658D21 /* Debug */,
-				C1339E0622554F6100658D21 /* Release */,
+				C16527FA2255EC1E00D9D39F /* Debug */,
+				C16527FB2255EC1E00D9D39F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C1339E0722554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOS" */ = {
+		C16527FC2255EC1E00D9D39F /* Build configuration list for PBXNativeTarget "Calfit_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C1339E0822554F6100658D21 /* Debug */,
-				C1339E0922554F6100658D21 /* Release */,
+				C16527FD2255EC1E00D9D39F /* Debug */,
+				C16527FE2255EC1E00D9D39F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C1339E0A22554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOSTests" */ = {
+		C16527FF2255EC1E00D9D39F /* Build configuration list for PBXNativeTarget "Calfit_iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C1339E0B22554F6100658D21 /* Debug */,
-				C1339E0C22554F6100658D21 /* Release */,
+				C16528002255EC1E00D9D39F /* Debug */,
+				C16528012255EC1E00D9D39F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C1339E0D22554F6100658D21 /* Build configuration list for PBXNativeTarget "Calfit_iOSUITests" */ = {
+		C16528022255EC1E00D9D39F /* Build configuration list for PBXNativeTarget "Calfit_iOSUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C1339E0E22554F6100658D21 /* Debug */,
-				C1339E0F22554F6100658D21 /* Release */,
+				C16528032255EC1E00D9D39F /* Debug */,
+				C16528042255EC1E00D9D39F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C1339DD322554F5D00658D21 /* Project object */;
+	rootObject = C16527C82255EC1D00D9D39F /* Project object */;
 }
