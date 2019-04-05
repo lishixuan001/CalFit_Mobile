@@ -1,9 +1,0 @@
-Admin:
-	Username: admin
-	Password: CalfitAdmin
-
-Email:
-  First Name: Calfit
-  Last Name: Calfit
-  Address: calfit.system@gmail.com
-  Password: calfitberkeley
