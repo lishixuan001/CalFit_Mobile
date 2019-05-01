@@ -36,15 +36,16 @@
     BOOL isConnected = [self IsConnectionAvailable];
     if (isConnected) {
         // Load WebView
-        NSString *stringURL = @"https://www.youtube.com";
+        NSString *stringURL = @"http://128.32.192.76/calfit/index/";
         NSURL *URL = [NSURL URLWithString:stringURL];
         NSURLRequest *requestURL = [NSURLRequest requestWithURL:URL];
         [self.webView loadRequest:requestURL];
     }
     else {
         // Background Image Notice
-        UIImage *image = [UIImage imageNamed: @"logo.png"];
+        UIImage *image = [UIImage imageNamed: @"logo"];
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.view.layer.contents = (__bridge id _Nullable)(image.CGImage);
         [self.imageView setImage:image];
         self.imageView.hidden = NO;
         

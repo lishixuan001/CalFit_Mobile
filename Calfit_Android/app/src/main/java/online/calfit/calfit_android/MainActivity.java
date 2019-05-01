@@ -32,8 +32,8 @@ public class MainActivity extends Activity {
         webSettings.setJavaScriptEnabled(true);
 
         // Load WebView - Check Internet Connection
-        if (!haveNetwork()) {
-            myWebView.loadUrl("https://www.youtube.com");
+        if (haveNetwork()) {
+            myWebView.loadUrl("http://106.15.186.59/calfit/index/");
             myWebView.setWebViewClient(new WebViewClient());
         } else {
             showAlertDialog(null);

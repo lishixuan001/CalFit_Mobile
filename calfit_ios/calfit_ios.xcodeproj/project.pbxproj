@@ -10,14 +10,13 @@
 		C16527D52255EC1D00D9D39F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527D42255EC1D00D9D39F /* AppDelegate.m */; };
 		C16527D82255EC1D00D9D39F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527D72255EC1D00D9D39F /* ViewController.m */; };
 		C16527DB2255EC1D00D9D39F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16527D92255EC1D00D9D39F /* Main.storyboard */; };
-		C16527DD2255EC1E00D9D39F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C16527DC2255EC1E00D9D39F /* Assets.xcassets */; };
 		C16527E02255EC1E00D9D39F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16527DE2255EC1E00D9D39F /* LaunchScreen.storyboard */; };
 		C16527E32255EC1E00D9D39F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527E22255EC1E00D9D39F /* main.m */; };
 		C16527ED2255EC1E00D9D39F /* Calfit_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527EC2255EC1E00D9D39F /* Calfit_iOSTests.m */; };
 		C16527F82255EC1E00D9D39F /* Calfit_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527F72255EC1E00D9D39F /* Calfit_iOSUITests.m */; };
 		C165280A2255F17200D9D39F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16528092255F17200D9D39F /* SystemConfiguration.framework */; };
-		C16528102256064700D9D39F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C165280F2256064700D9D39F /* logo.png */; };
 		C16528142256067900D9D39F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C16528122256067900D9D39F /* Reachability.m */; };
+		C1DC46D52279BB160026D7AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C16527DC2255EC1E00D9D39F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 		C16527F72255EC1E00D9D39F /* Calfit_iOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calfit_iOSUITests.m; sourceTree = "<group>"; };
 		C16527F92255EC1E00D9D39F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C16528092255F17200D9D39F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		C165280F2256064700D9D39F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../../../Downloads/logo.png; sourceTree = "<group>"; };
 		C16528122256067900D9D39F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C16528132256067900D9D39F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,7 +108,6 @@
 		C16527D22255EC1D00D9D39F /* Calfit_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C165280F2256064700D9D39F /* logo.png */,
 				C16527D32255EC1D00D9D39F /* AppDelegate.h */,
 				C16527D42255EC1D00D9D39F /* AppDelegate.m */,
 				C16527D62255EC1D00D9D39F /* ViewController.h */,
@@ -255,9 +252,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C16528102256064700D9D39F /* logo.png in Resources */,
 				C16527E02255EC1E00D9D39F /* LaunchScreen.storyboard in Resources */,
-				C16527DD2255EC1E00D9D39F /* Assets.xcassets in Resources */,
+				C1DC46D52279BB160026D7AC /* Assets.xcassets in Resources */,
 				C16527DB2255EC1D00D9D39F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6MLM4SQ384;
 				INFOPLIST_FILE = Calfit_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,6 +471,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6MLM4SQ384;
 				INFOPLIST_FILE = Calfit_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
