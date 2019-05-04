@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "Reachability.h"
 
-@interface ViewController ()
-
+@interface ViewController () {
+    BOOL isGrantedNotificationAccess;
+}
 @end
 
 @implementation ViewController
@@ -18,7 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    isGrantedNotificationAccess = false;
+    UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound;
+    [center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        self->isGrantedNotificationAccess = granted;
+    }];
     // Bond Navigation Delegate
     self.webView.navigationDelegate = self;
     
@@ -52,6 +58,21 @@
         // Button ShowUp
         [self.reloadButton setTitle:@"ReLoad" forState:UIControlStateNormal];
         self.reloadButton.hidden = NO;
+    }
+}
+
+- (void)notification {
+    if (isGrantedNotificationAccess) {
+        UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
+        UNMutableNotificationContent * mucontent = [[UNMutableNotificationContent alloc] init];
+        mucontent.title = @"CalFit";
+        mucontent.subtitle = @"Reminder";
+        mucontent.body = @"Good Morning! Your goal today is ready!";
+        mucontent.sound = [UNNotificationSound defaultSound];
+        
+        UNTimeIntervalNotificationTrigger * trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:3 repeats:NO];
+        UNNotificationRequest * request = [UNNotificationRequest requestWithIdentifier:@"CalFitLocalNotification" content:mucontent trigger:trigger];
+        [center addNotificationRequest:request withCompletionHandler:nil];
     }
 }
 

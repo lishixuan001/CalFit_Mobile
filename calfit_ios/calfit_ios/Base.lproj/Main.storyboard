@@ -75,6 +75,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="2000" height="2000"/>
+        <image name="logo" width="1011" height="1020"/>
     </resources>
 </document>

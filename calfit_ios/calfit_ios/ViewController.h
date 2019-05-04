@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import <UserNotifications/UserNotifications.h>
+// #import <Crittercism/Crittercism.h>
 
 @interface ViewController : UIViewController <WKNavigationDelegate>
+
 
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -18,6 +21,7 @@
 
 - (void)operate;
 - (BOOL)IsConnectionAvailable;
+- (void)notification;
 
 @end
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C112054E227DB4B8000A8EA7 /* Crittercism.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C112054D227DB4B8000A8EA7 /* Crittercism.framework */; };
+		C112054F227DB4E0000A8EA7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16528092255F17200D9D39F /* SystemConfiguration.framework */; };
+		C1120551227DB4E8000A8EA7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1120550227DB4E8000A8EA7 /* CoreData.framework */; };
 		C16527D52255EC1D00D9D39F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527D42255EC1D00D9D39F /* AppDelegate.m */; };
 		C16527D82255EC1D00D9D39F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527D72255EC1D00D9D39F /* ViewController.m */; };
 		C16527DB2255EC1D00D9D39F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C16527D92255EC1D00D9D39F /* Main.storyboard */; };
@@ -16,6 +19,7 @@
 		C16527F82255EC1E00D9D39F /* Calfit_iOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C16527F72255EC1E00D9D39F /* Calfit_iOSUITests.m */; };
 		C165280A2255F17200D9D39F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16528092255F17200D9D39F /* SystemConfiguration.framework */; };
 		C16528142256067900D9D39F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C16528122256067900D9D39F /* Reachability.m */; };
+		C1AFA138227C597B00F37FB5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1AFA137227C597B00F37FB5 /* UserNotifications.framework */; };
 		C1DC46D52279BB160026D7AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C16527DC2255EC1E00D9D39F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C112054D227DB4B8000A8EA7 /* Crittercism.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crittercism.framework; path = ../../../../../Downloads/Crittercism_v5_7_3/iOS/Crittercism.framework; sourceTree = "<group>"; };
+		C1120550227DB4E8000A8EA7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C16527D02255EC1D00D9D39F /* Calfit_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calfit_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C16527D32255EC1D00D9D39F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C16527D42255EC1D00D9D39F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -56,6 +62,7 @@
 		C16528092255F17200D9D39F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C16528122256067900D9D39F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C16528132256067900D9D39F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		C1AFA137227C597B00F37FB5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1AFA138227C597B00F37FB5 /* UserNotifications.framework in Frameworks */,
+				C112054E227DB4B8000A8EA7 /* Crittercism.framework in Frameworks */,
 				C165280A2255F17200D9D39F /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1120551227DB4E8000A8EA7 /* CoreData.framework in Frameworks */,
+				C112054F227DB4E0000A8EA7 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +155,10 @@
 		C16528082255F17200D9D39F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1120550227DB4E8000A8EA7 /* CoreData.framework */,
+				C1AFA137227C597B00F37FB5 /* UserNotifications.framework */,
 				C16528092255F17200D9D39F /* SystemConfiguration.framework */,
+				C112054D227DB4B8000A8EA7 /* Crittercism.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -453,15 +467,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6MLM4SQ384;
+				DEVELOPMENT_TEAM = KYV63HDP67;
 				INFOPLIST_FILE = Calfit_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-Development";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -470,15 +486,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6MLM4SQ384;
+				DEVELOPMENT_TEAM = KYV63HDP67;
 				INFOPLIST_FILE = Calfit_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shixuanli.Calfit-Development";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -488,6 +506,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KYV63HDP67;
 				INFOPLIST_FILE = Calfit_iOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -506,6 +525,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KYV63HDP67;
 				INFOPLIST_FILE = Calfit_iOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -523,6 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KYV63HDP67;
 				INFOPLIST_FILE = Calfit_iOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -540,6 +561,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KYV63HDP67;
 				INFOPLIST_FILE = Calfit_iOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
