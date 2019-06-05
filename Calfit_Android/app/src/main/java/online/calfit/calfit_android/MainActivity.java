@@ -1,22 +1,38 @@
 package online.calfit.calfit_android;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends Activity {
 
     private WebView myWebView;
+    private static final String TAG = "MainActivity";
+
+    DatabaseHelper mDatabaseHelper;
+    private Button btnSubmit;
+    private EditText editText1, editText2;
+    private LinearLayout linearLayout;
 
 
     @Override
@@ -25,7 +41,67 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
 
+        set_notifications("notify_morning");
+        set_notifications("notify_evening");
+
+        ArrayList<String> listData = collectData();
+        if (listData.size() > 0) {
+            linearLayout.setVisibility(View.GONE);
+            String actigraphId = (String) listData.get(0);
+            openWebView(actigraphId);
+        } else {
+            editText1 = (EditText) findViewById(R.id.Actigraph1);
+            editText2 = (EditText) findViewById(R.id.Actigraph2);
+            btnSubmit = (Button) findViewById(R.id.btnSubmit);
+            mDatabaseHelper = new DatabaseHelper(this);
+
+            btnSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String actigraphID1 = editText1.getText().toString();
+                    String actigraphID2 = editText2.getText().toString();
+                    if (actigraphID1.equals(actigraphID2)) {
+                        AddData(actigraphID1);
+                        linearLayout.setVisibility(View.GONE);
+                        set_notifications("notify_morning");
+                        set_notifications("notify_evening");
+                        openWebView(actigraphID1);
+                    } else {
+                        editText1.setText("");
+                        editText2.setText("");
+                        toastMessage("Please confirm your ActigraphID!");
+                    }
+
+                }
+            });
+        }
+
+    }
+
+    public void set_notifications(String actionType) {
+        int hour, minute;
+
+        if (actionType.equals("notify_morning")) {
+            hour = 8;
+            minute = 0;
+        } else {
+            hour = 22;
+            minute = 0;
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        Intent intent = new Intent(getApplicationContext(), NotificationReciever.class);
+        intent.setAction(actionType);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), alarmManager.INTERVAL_DAY,pendingIntent);
+        Log.d(TAG, "Notification Initialized: [" + actionType + "]");
+    }
+
+    public void openWebView(String actigraphId) {
         // Define WebView
         myWebView = (WebView) findViewById(R.id.webView);
         WebSettings webSettings = myWebView.getSettings();
@@ -33,11 +109,42 @@ public class MainActivity extends Activity {
 
         // Load WebView - Check Internet Connection
         if (haveNetwork()) {
-            myWebView.loadUrl("http://106.15.186.59/calfit/index/");
+            myWebView.loadUrl("http://128.32.192.76/calfit/index/" + actigraphId);
             myWebView.setWebViewClient(new WebViewClient());
         } else {
             showAlertDialog(null);
         }
+    }
+
+    public void AddData(String newEntry) {
+        boolean insertData = mDatabaseHelper.addData(newEntry);
+
+        if (insertData) {
+            toastMessage("Data Successfully Inserted!");
+        } else {
+            toastMessage("Something went wrong");
+        }
+    }
+
+    public ArrayList<String> collectData() {
+        //get the data and append to a list
+        mDatabaseHelper = new DatabaseHelper(this);
+        Cursor data = mDatabaseHelper.getData();
+        ArrayList<String> listData = new ArrayList<>();
+        while(data.moveToNext()){
+            //get the value from the database in column 1
+            //then add it to the ArrayList
+            listData.add(data.getString(1));
+        }
+        return listData;
+    }
+
+    /**
+     * customizable toast
+     * @param message
+     */
+    private void toastMessage(String message){
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
 
     private boolean haveNetwork() {
