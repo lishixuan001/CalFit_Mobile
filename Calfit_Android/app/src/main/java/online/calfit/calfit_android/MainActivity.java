@@ -41,25 +41,30 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        /* Fetch Linear Layout */
         linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
 
         set_notifications("notify_morning");
         set_notifications("notify_evening");
 
+        /* Check Database See If Already Stores Data */
         ArrayList<String> listData = collectData();
         if (listData.size() > 0) {
             linearLayout.setVisibility(View.GONE);
             String actigraphId = (String) listData.get(0);
             openWebView(actigraphId);
         } else {
+            /* Collect User Input From The Front Page Text Box */
             editText1 = (EditText) findViewById(R.id.Actigraph1);
             editText2 = (EditText) findViewById(R.id.Actigraph2);
             btnSubmit = (Button) findViewById(R.id.btnSubmit);
             mDatabaseHelper = new DatabaseHelper(this);
 
+            /* Respond to Submit Button */
             btnSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    /* Check If Two Text Boxes Have Same Input */
                     String actigraphID1 = editText1.getText().toString();
                     String actigraphID2 = editText2.getText().toString();
                     if (actigraphID1.equals(actigraphID2)) {
@@ -80,6 +85,8 @@ public class MainActivity extends Activity {
 
     }
 
+    /** Set Up Notification
+     * :param actionType -> "notify_morning" or "notify_evening" */
     public void set_notifications(String actionType) {
         int hour, minute;
 
@@ -101,6 +108,8 @@ public class MainActivity extends Activity {
         Log.d(TAG, "Notification Initialized: [" + actionType + "]");
     }
 
+
+    /** Open the WebView Page */
     public void openWebView(String actigraphId) {
         // Define WebView
         myWebView = (WebView) findViewById(R.id.webView);
@@ -116,6 +125,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    /** Add Data To Database -> used when first usage of the App, user input their Actigraph ID*/
     public void AddData(String newEntry) {
         boolean insertData = mDatabaseHelper.addData(newEntry);
 
@@ -126,6 +136,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    /** Collect Data From Database */
     public ArrayList<String> collectData() {
         //get the data and append to a list
         mDatabaseHelper = new DatabaseHelper(this);
@@ -147,6 +158,7 @@ public class MainActivity extends Activity {
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
 
+    /** Check If Has Network Or Not */
     private boolean haveNetwork() {
         boolean have_WIFI=false;
         boolean have_MobileData=false;
@@ -165,6 +177,7 @@ public class MainActivity extends Activity {
         return have_MobileData || have_WIFI;
     }
 
+    /** Show Alert If No Internet */
     public void showAlertDialog(View v) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -182,6 +195,7 @@ public class MainActivity extends Activity {
     @Override
     public void onBackPressed() {
         if (myWebView.canGoBack()) {
+            /* TODO -> Can Go Back When Click "Back"? */
             myWebView.goBack();
         } else {
             super.onBackPressed();
