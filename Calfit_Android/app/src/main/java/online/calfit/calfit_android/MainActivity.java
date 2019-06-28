@@ -50,9 +50,6 @@ public class MainActivity extends Activity {
         /* Fetch Linear Layout */
         linearLayout = findViewById(R.id.linearLayout);
 
-        // TEST NOTIFICATION
-        set_notifications("notify_morning");
-
         /* Check Database See If Already Stores Data */
         ArrayList<String> listData = collectData();
         if (listData.size() > 0) {
@@ -97,10 +94,10 @@ public class MainActivity extends Activity {
         int hour, minute;
 
         if (actionType.equals("notify_morning")) {
-            hour = 5;
-            minute = 2;
+            hour = 8;
+            minute = 0;
         } else {
-            hour = 22;
+            hour = 20;
             minute = 0;
         }
 
