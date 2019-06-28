@@ -26,6 +26,10 @@
                 <data android:host="splash" android:scheme="calfit" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".RepeatingActivity"/>
+
+        <receiver android:name=".NotificationReciever"/>
     </application>
 
 </manifest>

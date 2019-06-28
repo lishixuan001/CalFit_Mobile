@@ -3,13 +3,18 @@ package online.calfit.calfit_android;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -33,6 +38,7 @@ public class MainActivity extends Activity {
     private Button btnSubmit;
     private EditText editText1, editText2;
     private LinearLayout linearLayout;
+    public final String CHANNEL_ID = "001";
 
 
     @Override
@@ -42,22 +48,22 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         /* Fetch Linear Layout */
-        linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+        linearLayout = findViewById(R.id.linearLayout);
 
+        // TEST NOTIFICATION
         set_notifications("notify_morning");
-        set_notifications("notify_evening");
 
         /* Check Database See If Already Stores Data */
         ArrayList<String> listData = collectData();
         if (listData.size() > 0) {
             linearLayout.setVisibility(View.GONE);
-            String actigraphId = (String) listData.get(0);
+            String actigraphId = listData.get(0);
             openWebView(actigraphId);
         } else {
             /* Collect User Input From The Front Page Text Box */
-            editText1 = (EditText) findViewById(R.id.Actigraph1);
-            editText2 = (EditText) findViewById(R.id.Actigraph2);
-            btnSubmit = (Button) findViewById(R.id.btnSubmit);
+            editText1 = findViewById(R.id.Actigraph1);
+            editText2 = findViewById(R.id.Actigraph2);
+            btnSubmit = findViewById(R.id.btnSubmit);
             mDatabaseHelper = new DatabaseHelper(this);
 
             /* Respond to Submit Button */
@@ -82,8 +88,8 @@ public class MainActivity extends Activity {
                 }
             });
         }
-
     }
+
 
     /** Set Up Notification
      * :param actionType -> "notify_morning" or "notify_evening" */
@@ -91,37 +97,48 @@ public class MainActivity extends Activity {
         int hour, minute;
 
         if (actionType.equals("notify_morning")) {
-            hour = 8;
-            minute = 0;
+            hour = 5;
+            minute = 2;
         } else {
             hour = 22;
             minute = 0;
         }
+
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
+
         Intent intent = new Intent(getApplicationContext(), NotificationReciever.class);
         intent.setAction(actionType);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), alarmManager.INTERVAL_DAY,pendingIntent);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        assert alarmManager != null;
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
         Log.d(TAG, "Notification Initialized: [" + actionType + "]");
+
     }
 
+    /** Get Android API Version */
+    public int getAndroidVersion() {
+        String release = Build.VERSION.RELEASE;
+        int sdkVersion = Build.VERSION.SDK_INT;
+        return sdkVersion;
+    }
 
     /** Open the WebView Page */
     public void openWebView(String actigraphId) {
         // Define WebView
-        myWebView = (WebView) findViewById(R.id.webView);
+        myWebView = findViewById(R.id.webView);
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
         // Load WebView - Check Internet Connection
         if (haveNetwork()) {
-            myWebView.loadUrl("http://128.32.192.76/calfit/index/" + actigraphId);
+            myWebView.loadUrl("https://modesto.ieor.berkeley.edu/calfit/index/" + actigraphId);
             myWebView.setWebViewClient(new WebViewClient());
         } else {
-            showAlertDialog(null);
+            showInternetAlertDialog();
         }
     }
 
@@ -178,18 +195,47 @@ public class MainActivity extends Activity {
     }
 
     /** Show Alert If No Internet */
-    public void showAlertDialog(View v) {
+    public void showInternetAlertDialog() {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("No Internet");
+        alert.setIcon(android.R.drawable.ic_dialog_alert);
         alert.setMessage("Network not available!");
         alert.setNeutralButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                toastMessage("Please Check your Network");
                 dialogInterface.cancel();
             }
         });
         alert.create().show();
+    }
+
+    public void showInternetAlert() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                //set icon
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                //set title
+                .setTitle("No Internet")
+                //set message
+                .setMessage("Network not available!")
+                //set positive button
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what would happen when positive button is clicked
+                        toastMessage("Please Check your Network");
+                    }
+                })
+                //set negative button
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set what should happen when negative button is clicked
+                        toastMessage("Please Check your Network");
+                    }
+                })
+                .show();
     }
 
     @Override
