@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by lishixuan001 on 6/28/19.
  */
 
-class RepeatingActivity extends AppCompatActivity {
+public class RepeatingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -29,7 +29,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ActigraphID"
+            android:text="User Information"
             android:textAlignment="center"
             tools:layout_editor_absoluteX="163dp"
             tools:layout_editor_absoluteY="95dp" />
@@ -39,6 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Username"
             android:inputType="textPersonName"
             android:textAlignment="center" />
 
@@ -47,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="ActigraphID"
             android:inputType="textPersonName"
             android:textAlignment="center" />
 

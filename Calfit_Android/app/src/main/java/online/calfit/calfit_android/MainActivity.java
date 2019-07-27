@@ -1,5 +1,6 @@
 package online.calfit.calfit_android;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NotificationManagerCompat;
@@ -26,6 +28,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -52,10 +65,11 @@ public class MainActivity extends Activity {
 
         /* Check Database See If Already Stores Data */
         ArrayList<String> listData = collectData();
-        if (listData.size() > 0) {
+        if (listData.size() > 1) {
             linearLayout.setVisibility(View.GONE);
-            String actigraphId = listData.get(0);
-            openWebView(actigraphId);
+            String userName = listData.get(0);
+            String actigraphId = listData.get(1);
+            openWebView(userName, actigraphId);
         } else {
             /* Collect User Input From The Front Page Text Box */
             editText1 = findViewById(R.id.Actigraph1);
@@ -67,23 +81,97 @@ public class MainActivity extends Activity {
             btnSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /* Check If Two Text Boxes Have Same Input */
-                    String actigraphID1 = editText1.getText().toString();
-                    String actigraphID2 = editText2.getText().toString();
-                    if (actigraphID1.equals(actigraphID2)) {
-                        AddData(actigraphID1);
-                        linearLayout.setVisibility(View.GONE);
-                        set_notifications("notify_morning");
-                        set_notifications("notify_evening");
-                        openWebView(actigraphID1);
-                    } else {
+                    /* Collect Input */
+                    String userName = editText1.getText().toString();
+                    String actigraphID = editText2.getText().toString();
+
+                    if (userName.equals("") || actigraphID.equals("")) {
                         editText1.setText("");
                         editText2.setText("");
-                        toastMessage("Please confirm your ActigraphID!");
+                        toastMessage("Please fill the information");
+                    } else {
+                        /* Call API Check Validity */
+                        String apiUrl = "https://modesto.ieor.berkeley.edu/calfit/api/check_user/" + userName + "/" + actigraphID;
+                        new JsonTask().execute(apiUrl);
                     }
 
                 }
             });
+        }
+    }
+
+    public class JsonTask extends AsyncTask<String, String, String> {
+
+        protected String doInBackground(String... params) {
+
+
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
+
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+
+
+                InputStream stream = connection.getInputStream();
+
+                reader = new BufferedReader(new InputStreamReader(stream));
+
+                StringBuffer buffer = new StringBuffer();
+                String line = "";
+
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line+"\n");
+                }
+
+                JSONArray jsonArray = new JSONArray(buffer.toString());
+                if (jsonArray.length() > 0) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    int is_valid = jsonObject.getInt("Valid");
+                    int success = jsonObject.getInt("Success");
+                    if (success == 1 && is_valid == 1) {
+                        return "success";
+                    }
+                }
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            if (result == null) {
+                editText1.setText("");
+                editText2.setText("");
+                toastMessage("Invalid Information");
+            } else {
+                String userName = editText1.getText().toString();
+                String actigraphID = editText2.getText().toString();
+                AddData(userName, actigraphID);
+                linearLayout.setVisibility(View.GONE);
+                set_notifications("notify_morning");
+                set_notifications("notify_evening");
+                openWebView(userName, actigraphID);
+            }
         }
     }
 
@@ -124,7 +212,7 @@ public class MainActivity extends Activity {
     }
 
     /** Open the WebView Page */
-    public void openWebView(String actigraphId) {
+    public void openWebView(String userName, String actigraphId) {
         // Define WebView
         myWebView = findViewById(R.id.webView);
         WebSettings webSettings = myWebView.getSettings();
@@ -132,7 +220,7 @@ public class MainActivity extends Activity {
 
         // Load WebView - Check Internet Connection
         if (haveNetwork()) {
-            myWebView.loadUrl("https://modesto.ieor.berkeley.edu/calfit/index/" + actigraphId);
+            myWebView.loadUrl("https://modesto.ieor.berkeley.edu/calfit/index/" + userName + "/" + actigraphId);
             myWebView.setWebViewClient(new WebViewClient());
         } else {
             showInternetAlertDialog();
@@ -140,11 +228,12 @@ public class MainActivity extends Activity {
     }
 
     /** Add Data To Database -> used when first usage of the App, user input their Actigraph ID*/
-    public void AddData(String newEntry) {
-        boolean insertData = mDatabaseHelper.addData(newEntry);
+    public void AddData(String userName, String newEntry) {
+        boolean insertData1 = mDatabaseHelper.addData(userName);
+        boolean insertData2 = mDatabaseHelper.addData(newEntry);
 
-        if (insertData) {
-            toastMessage("Data Successfully Inserted!");
+        if (insertData1 && insertData2) {
+            toastMessage("Login Validated");
         } else {
             toastMessage("Something went wrong");
         }
